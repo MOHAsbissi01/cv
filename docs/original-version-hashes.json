@@ -1,0 +1,22 @@
+{
+  "index.html": "34882ebe8fe5bac3066055e032b52cf473e1c5ced9c4f5aaa09236e567cafeb5",
+  "cv.html": "dbbea802b901f15a87e68d5e3de2138fab992c1ab2828400858e62bd89fe31e9",
+  "CV.pdf": "4f47420a77fe81798dd7221a1c85a1528e3c93b57a935ddeb9f9f4444aa53ce1",
+  "README.md": "fa42f303066c0f1f5f552342ac2d2c7c066838838594fdd51481c76f3489409c",
+  "FACTS_TO_VERIFY.md": "f1f2f3d8bae0c810a5c60c09e9916ac0b4b71f5f3be9f1de77433e3e41789e09",
+  "CHANGELOG.md": "9c2eb25c476396640a09cfa1bce8755352c8201687377dea37612db35b8a77fd",
+  "requirements-build.txt": "b163cb98d1237741ada5c15c9972f2fd998bd16e2b1c87f3c248017e0e45dd3f",
+  "assets/cv.css": "1ea505550e26d7ca21f48907ebf0cd38bfd9996ef522bd2f4fa8594c77b93be2",
+  "assets/portfolio-qr.json": "5e2320fb94013463d405bb580a3f9bc9553f567ab6d8c7ae076493eb12064586",
+  "assets/portfolio-qr.png": "fdec65ae9e57d9ca5aab34dae789ebba45605ac5e6349aec3cefadc03e6e7099",
+  "assets/portfolio-qr.svg": "334a6b11999205a12893649cb8f21e2c7ae31eac9ac8757b1488e846787e1aca",
+  "assets/portfolio.js": "a11b49ac93f3c4791e6969a3aef1790b5cda4286f5eae7ed5ee70857862b128a",
+  "assets/portrait.jpg": "0a979c0fe267c75198d074ae99420a90241a15ffba5df57918e814c6fb99be5c",
+  "assets/styles.css": "6817ea8ca3582c9935492cff4cb4c4bc0aa81bbe006d546370eb5fffff952c43",
+  "data/build-manifest.json": "f09ac052dddc59f0f24dc9627b410de96a8a132cc0db73bfb49916e7ab2058a9",
+  "data/profile.json": "54487abb08578c2d72985c7eafb810bee7c9e56df292b0969e43fcf11f89ab19",
+  "scripts/build.py": "7f59fa37fb6417b5875a63e3808b32ac896e4daff2696e4d59d395701bb420cf",
+  "scripts/validate.py": "67d6a87df6b7d830fc8deeaf44e9768dfca11ed83bd643deb7146cded4369c96",
+  "docs/EVIDENCE.md": "491b7f02a5b0c33f999e28793732b731ac8ec914c0c1adb68ee9c02877ea8bde",
+  "docs/RECRUITER_REVIEW.md": "fe078400622235fef4f2c4f45ec0107f9856b9f374c4ea7fc756b17f5c0e419b"
+}

@@ -1,0 +1,597 @@
+{
+  "personal": {
+    "name": "Mohamed Sbissi",
+    "title": "Computer Engineering Student",
+    "focus": "Data Engineering | Business Intelligence | SAP",
+    "objective": "Seeking PFE 2027",
+    "location": "Tunis, Tunisia",
+    "email": "sbissi.mohamed@esprit.tn",
+    "linkedin": "https://www.linkedin.com/in/mohamed-sbissi",
+    "github": "https://github.com/MOHAsbissi01",
+    "portfolio": "https://mohasbissi01.github.io/cv/",
+    "portfolio_verified_on": "2026-09-26",
+    "summary": "Final-year Computer Engineering student at ESPRIT, specializing in ERP and Business Intelligence and seeking a 2027 PFE internship. Built HR data preparation workflows, PostgreSQL reporting views, and Power BI dashboards with DAX at ODDO BHF. Combines SQL, Python, and software integration with academic ML projects. Currently studying SAP BW, ABAP/Fiori, AWS, DevOps, and MLOps.",
+    "cv_summary": "Final-year ERP/BI engineering student at ESPRIT seeking PFE 2027. Builds reliable data pipelines, SQL reporting and decision-ready BI, with applied software/ML integration and current SAP BW / ABAP-Fiori coursework."
+  },
+  "experience": [
+    {
+      "id": "oddo",
+      "company": "ODDO BHF",
+      "role": "Software Development Factory Intern",
+      "focus": "Data & BI",
+      "date": "Jun 2026 - Aug 2026",
+      "location": "Lac 2, Tunis",
+      "context": "HR analytics and employee lifecycle application; internship from 9 June to 31 August 2026.",
+      "contributions": [
+        "Consolidated Excel/CSV HR sources in PostgreSQL, checking duplicates, missing values, keys, and record consistency.",
+        "Structured an HR model across 12 business domains and created seven SQL reporting views for participation, satisfaction, and employee history.",
+        "Built a four-page Power BI training report with a semantic model and DAX measures for attendance, training hours, and satisfaction.",
+        "Implemented authenticated .NET/EF Core endpoints and Angular analytics views; integrated a Python ML service and validated .NET, Python, and Angular tests.",
+        "Developed French/English feedback sentiment scoring, batch processing, and unit tests; compared scores with human ratings.",
+        "Implemented employee lifecycle workflows, role-based access, data quality tracking, and audit history; documented delivered modules."
+      ],
+      "cv_bullets": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "stack": [
+        "PostgreSQL",
+        "SQL",
+        "Power BI",
+        "DAX",
+        "Python",
+        ".NET",
+        "EF Core",
+        "Angular"
+      ],
+      "source": "Journal_de_stage_Mohamed_SBISSI_31-08-2026 (1)jjjjjjjjjjjjj.pdf",
+      "cv_contributions": [
+        "Prepared HR data in PostgreSQL across 12 business domains; created seven SQL reporting views with data quality checks.",
+        "Built a four-page Power BI report with a semantic model and DAX for attendance, training hours and satisfaction.",
+        "Implemented .NET/EF Core APIs and Angular analytics; integrated Python ML and validated .NET, Python and Angular tests."
+      ],
+      "environment": [
+        {
+          "category": "Data & Messaging",
+          "items": [
+            "Apache Kafka"
+          ]
+        },
+        {
+          "category": "Backend & Integration",
+          "items": [
+            "Node.js",
+            "WebSockets",
+            "Spring Batch",
+            "Camunda"
+          ]
+        },
+        {
+          "category": "DevOps & Infrastructure",
+          "items": [
+            "OpenShift",
+            "Helm",
+            "Nginx"
+          ]
+        },
+        {
+          "category": "Security & Identity",
+          "items": [
+            "Keycloak"
+          ]
+        },
+        {
+          "category": "Observability & Logging",
+          "items": [
+            "ELK Stack"
+          ]
+        },
+        {
+          "category": "Other integrations",
+          "items": [
+            "Bot-related development / integration"
+          ]
+        }
+      ],
+      "environment_note": "Technical environment / exposure. These tools belong to the broader internship context; implementation ownership and depth of use are not claimed.",
+      "environment_evidence": "User-confirmed internship exposure; journal supports OpenShift introductory practical work and mentions Camunda as a future industrialization task, not a delivered implementation.",
+      "cv_exposure": [
+        "Apache Kafka",
+        "OpenShift"
+      ],
+      "cv_main_stack": [
+        "PostgreSQL / SQL",
+        "Power BI / DAX",
+        ".NET / EF Core",
+        "Angular",
+        "Python"
+      ]
+    },
+    {
+      "id": "recordati",
+      "company": "Recordati Tunisie",
+      "role": "Data Engineer",
+      "focus": "",
+      "date": "Apr 2026 - Jun 2026",
+      "location": "Ariana, Tunisia",
+      "context": "Data engineering experience in a pharmaceutical environment.",
+      "contributions": [],
+      "cv_bullets": [],
+      "stack": [],
+      "review": "REVIEW: confirm employment type, personal deliverables, tools, and exact dates. The profile PDF supplies only the role, company, location, and period.",
+      "source": "Profile (3).pdf"
+    },
+    {
+      "id": "ooredoo",
+      "company": "Ooredoo Tunisie",
+      "role": "Software Engineering Intern",
+      "focus": "B2B platform & BI",
+      "date": "Jun 2025 - Jul 2025",
+      "location": "Lac 2, Tunis",
+      "context": "B2B telecom platform for partner companies.",
+      "contributions": [
+        "Developed Spring Boot and Angular components for a B2B platform centralizing telecom services and partner offerings.",
+        "Designed Power BI dashboards for contract tracking and service management.",
+        "Integrated heterogeneous sources through REST APIs and backend ETL pipelines; translated business requirements into technical specifications.",
+        "Applied Git branching and modular architecture in the development team's continuous integration environment."
+      ],
+      "cv_bullets": [
+        0,
+        1,
+        2
+      ],
+      "stack": [
+        "Spring Boot",
+        "Angular",
+        "REST APIs",
+        "Power BI",
+        "Git"
+      ],
+      "source": "Profile (3).pdf",
+      "cv_contributions": [
+        "Developed Spring Boot/Angular B2B components and Power BI dashboards for telecom contract and service tracking.",
+        "Integrated REST data sources and ETL pipelines; translated business requirements into technical specifications."
+      ]
+    },
+    {
+      "id": "telecom",
+      "company": "Tunisie Telecom",
+      "role": "Network & Systems Intern",
+      "focus": "",
+      "date": "Aug 2023 - Sep 2023",
+      "location": "Bardo, Tunisia",
+      "context": "Telecom infrastructure and customer connectivity.",
+      "contributions": [
+        "Assisted with maintaining network systems, databases, and customer service tools.",
+        "Diagnosed and resolved client connectivity issues, developing practical knowledge of network protocols and troubleshooting."
+      ],
+      "cv_bullets": [
+        1
+      ],
+      "stack": [
+        "Network protocols",
+        "Troubleshooting"
+      ],
+      "source": "Profile (3).pdf"
+    }
+  ],
+  "projects": [
+    {
+      "id": "urban",
+      "name": "Intelligent Urban Mobility Dashboard & ML Platform",
+      "date": "Feb 2026 - May 2026",
+      "organization": "ESPRIT",
+      "role": "Data / ML contributor (team project)",
+      "category": "Data & ML",
+      "context": "Team decision-support platform for sustainable mobility, environmental impact, and urban safety.",
+      "contributions": [
+        "Contributed Python data-loading and feature-engineering pipelines for ecological, mobility, and safety analyses.",
+        "Contributed training and evaluation modules for regression, forecasting, clustering, and anomaly detection; exported prediction datasets for BI reporting.",
+        "Contributed FastAPI prediction/retraining integration and n8n result persistence within the team's MLOps service."
+      ],
+      "stack": [
+        "Python",
+        "Pandas",
+        "scikit-learn",
+        "XGBoost",
+        "Prophet",
+        "FastAPI",
+        "n8n"
+      ],
+      "project_stack": [
+        "Power BI",
+        "Python",
+        "FastAPI",
+        "MLflow",
+        "n8n",
+        "Prometheus",
+        "Grafana",
+        "Streamlit",
+        "Next.js"
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/HeniRidene/Esprit-PABI-4ERPBI5-2526-BITribe"
+        },
+        {
+          "label": "Contribution evidence",
+          "url": "https://github.com/HeniRidene/Esprit-PABI-4ERPBI5-2526-BITribe/commit/6352f1fdb0"
+        }
+      ],
+      "review": "REVIEW: commits under MOHAsbissi01 support these contributions, but may include shared work. Confirm which modules you personally wrote, integrated, and can explain. Talend/Airflow and Spring Boot/Angular were supplied as team stack but are not attributed to you here.",
+      "evidence": [
+        "https://github.com/HeniRidene/Esprit-PABI-4ERPBI5-2526-BITribe/commit/6352f1fdb0",
+        "https://github.com/HeniRidene/Esprit-PABI-4ERPBI5-2526-BITribe/commit/efa9e52105"
+      ],
+      "cv_contributions": [
+        "Contributed Python data/feature pipelines and ML training/evaluation; exported BI-ready prediction datasets.",
+        "Contributed FastAPI prediction/retraining integration and n8n result persistence."
+      ]
+    },
+    {
+      "id": "greenops",
+      "name": "GreenOPS AI",
+      "date": "Date to confirm",
+      "organization": "AI competition / hackathon",
+      "role": "Data Engineer",
+      "category": "Competition",
+      "context": "Team solution designed to help pharmaceutical manufacturers reduce environmental impact while addressing regulated-environment requirements.",
+      "contributions": [
+        "Collected and integrated data from multiple sources into a preparation pipeline for AI training.",
+        "Processed and prepared training-ready datasets, aligning data requirements with the business problem.",
+        "Contributed to data presentation and website integration, connecting prepared data with ML prediction calculations."
+      ],
+      "stack": [],
+      "project_stack": [],
+      "achievement": "2nd Place - 2,000 TND prize",
+      "team": [
+        "Malek Hanbly",
+        "Houssem Eddine",
+        "Selim Manai",
+        "Mohamed Sbissi"
+      ],
+      "links": [],
+      "review": "REVIEW: confirm competition date and public award wording. Tools, source details, and implementation specifics are withheld under the ESPRIT / Opalia Recordati NDA. The LLM component was delivered by other team members.",
+      "evidence": [
+        "User-provided competition details",
+        "User-confirmed personal contributions and NDA restrictions"
+      ],
+      "confidentiality": "Technology and implementation details withheld under NDA. LLM development was handled by other team members.",
+      "cv_context": "Team solution to reduce pharmaceutical manufacturers' environmental impact within regulated environments.",
+      "cv_contributions": [
+        "Collected and integrated multi-source data into a preparation pipeline for AI training.",
+        "Prepared training-ready datasets aligned with pharmaceutical business needs; contributed data/prediction integration."
+      ]
+    },
+    {
+      "id": "business",
+      "name": "Business Performance Prediction - Machine Learning",
+      "date": "Nov 2025 - Dec 2025",
+      "organization": "Academic project",
+      "role": "Data Science / ML contributor",
+      "category": "Data & ML",
+      "context": "Business-data analysis and predictive insights for sales and profitability.",
+      "contributions": [
+        "Applied CRISP-DM to structure data exploration, preparation, and predictive analysis.",
+        "Explored supervised and unsupervised learning and evaluated models to translate business data into predictive insights."
+      ],
+      "stack": [
+        "Python",
+        "Pandas",
+        "scikit-learn",
+        "Jupyter"
+      ],
+      "project_stack": [],
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/MOHAsbissi01/Business-Performance-Prediction-ML"
+        }
+      ],
+      "review": "REVIEW: confirm your exact notebook ownership and relationship to Predictive ML Superstore; repository ownership alone does not establish every component as individual work.",
+      "evidence": [
+        "User-provided known work",
+        "https://github.com/MOHAsbissi01/Business-Performance-Prediction-ML"
+      ]
+    },
+    {
+      "id": "superstore",
+      "name": "Predictive ML Superstore - Streamlit Application",
+      "date": "Nov 2025 - Dec 2025",
+      "organization": "Academic project",
+      "role": "Prediction application developer",
+      "category": "Data & ML",
+      "context": "Interactive application for comparing business prediction models and explaining their outputs.",
+      "contributions": [
+        "Designed and deployed a Streamlit prediction application integrating supervised ML models.",
+        "Compared model performance using evaluation metrics and presented outputs as understandable business insights.",
+        "Added interactive predictions, dataset summaries, and visualizations."
+      ],
+      "stack": [
+        "Python",
+        "Streamlit",
+        "Pandas",
+        "Plotly"
+      ],
+      "project_stack": [],
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/MOHAsbissi01/streamlit-ml-superstore"
+        }
+      ],
+      "evidence": [
+        "User-provided personal contributions",
+        "https://github.com/MOHAsbissi01/streamlit-ml-superstore/blob/main/app.py"
+      ]
+    },
+    {
+      "id": "edutech",
+      "name": "EduTechHub",
+      "date": "Feb 2024 - May 2024",
+      "organization": "Early academic project",
+      "role": "Web development team member",
+      "category": "Development",
+      "context": "PHP MVC learning platform with user management, learning resources, and external API features.",
+      "contributions": [],
+      "stack": [],
+      "project_stack": [
+        "PHP",
+        "MVC",
+        "HTML5",
+        "CSS",
+        "JavaScript",
+        "Bootstrap 5"
+      ],
+      "links": [],
+      "unavailable_url": "https://github.com/MOHAsbissi01/2nd_project-EduTechHub",
+      "review": "REVIEW: repository returned HTTP 404 on 26 September 2026. Confirm public access and your modules before claiming ownership. Supplied team features include hashed passwords, CAPTCHA, email recovery, NASA/Google Books APIs, PDF export, courses, products, claims, and events.",
+      "evidence": [
+        "User-provided project description"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "category": "Data Engineering & BI",
+      "level": "Applied in internships",
+      "items": [
+        "SQL",
+        "PostgreSQL",
+        "Python",
+        "Excel/CSV preparation",
+        "ETL workflows",
+        "Data quality",
+        "Power BI",
+        "DAX",
+        "Data modeling"
+      ],
+      "cv_items": [
+        "SQL",
+        "PostgreSQL",
+        "Python",
+        "ETL",
+        "Data quality",
+        "Power BI",
+        "DAX",
+        "Data modeling"
+      ]
+    },
+    {
+      "category": "ML & Integration",
+      "level": "Academic / applied projects",
+      "items": [
+        "Pandas",
+        "scikit-learn",
+        "Streamlit",
+        "FastAPI",
+        "Model evaluation",
+        "NLP preprocessing"
+      ],
+      "cv_items": [
+        "Pandas",
+        "scikit-learn",
+        "Streamlit",
+        "FastAPI",
+        "Model evaluation",
+        "NLP"
+      ]
+    },
+    {
+      "category": "Software & Delivery",
+      "level": "Applied in internships",
+      "items": [
+        ".NET / EF Core",
+        "Angular",
+        "Spring Boot",
+        "REST APIs",
+        "Git",
+        "Jira",
+        "Unit and functional tests"
+      ],
+      "cv_items": [
+        ".NET / EF Core",
+        "Angular",
+        "Spring Boot",
+        "REST APIs",
+        "Git",
+        "Testing"
+      ]
+    },
+    {
+      "category": "SAP / ERP & Cloud",
+      "level": "Current coursework",
+      "items": [
+        "SAP BW",
+        "ABAP / Fiori",
+        "CRM",
+        "AWS Fundamentals",
+        "Big Data Analytics",
+        "DevOps",
+        "MLOps"
+      ],
+      "cv_items": [
+        "SAP BW",
+        "ABAP / Fiori",
+        "AWS Fundamentals",
+        "Big Data",
+        "DevOps",
+        "MLOps"
+      ]
+    },
+    {
+      "category": "Additional learning",
+      "level": "Foundations / current coursework",
+      "items": [
+        "OpenShift / Kubernetes fundamentals",
+        "Deep learning",
+        "Text and graph learning",
+        "Blockchain coursework",
+        "RSE / SDG"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "ESPRIT",
+      "degree": "Computer Engineering - ERP / Business Intelligence",
+      "date": "Sep 2022 - Present",
+      "note": "Final-year student. Degree in progress; seeking PFE 2027."
+    },
+    {
+      "school": "Lycee Khaznadar Bardo",
+      "degree": "Baccalaureate in Experimental Science",
+      "date": "Jun 2021",
+      "note": ""
+    }
+  ],
+  "certifications": [
+    "Fundamentals of Deep Learning",
+    "Introduction to Transformer-Based Natural Language Processing",
+    "Professional AI Prompt Engineering",
+    "Introduction to Bash Shell Scripting",
+    "Introduction to CRM with HubSpot"
+  ],
+  "legacy_certifications": [
+    "Combine Data from Multiple SQL Tables - listed in original HTML only; confirm credential and issuer."
+  ],
+  "awards": [
+    {
+      "name": "GreenOPS AI",
+      "result": "2nd Place - 2,000 TND prize",
+      "role": "Data Engineer",
+      "date": "Date to confirm"
+    },
+    {
+      "name": "IEEEXtreme 17.0",
+      "result": "Programming competition participant",
+      "role": "",
+      "date": "Edition 17.0"
+    },
+    {
+      "name": "Insight For Impact",
+      "result": "Listed in profile PDF; award details to confirm",
+      "role": "",
+      "date": "Date to confirm"
+    }
+  ],
+  "languages": [
+    {
+      "name": "Arabic",
+      "level": "Native"
+    },
+    {
+      "name": "French",
+      "level": "B2"
+    },
+    {
+      "name": "English",
+      "level": "B2"
+    },
+    {
+      "name": "Spanish",
+      "level": "A2"
+    }
+  ],
+  "facts_to_verify": [
+    "GreenOPS AI: confirm competition date, organizer, award proof, and that this high-level contribution wording is approved for public disclosure. Do not add tools or confidential pipeline details under the ESPRIT / Opalia Recordati NDA. Prize is a team achievement.",
+    "Urban Mobility: verify individual authorship of each referenced module. Commits can contain team contributions; no personal Talend/Airflow, Power BI RLS, or full-platform ownership is claimed.",
+    "Recordati: confirm employment type, exact dates, personal scope, deliverables, and tools.",
+    "ODDO BHF: confirm the journal accurately reflects your personal scope and that descriptions disclose no confidential details.",
+    "ESPRIT: confirm formal degree wording, graduation date, and PFE start date/duration. The original 'graduated Sep 2022' claim was removed.",
+    "Business Performance / Superstore: confirm whether these form one academic workstream and which notebooks are yours.",
+    "EduTechHub: restore or correct repository access and confirm personal modules. Link is withheld while it returns 404.",
+    "Certifications: verify issuer, completion dates, and credential links; 'Combine Data from Multiple SQL Tables' is retained for review only.",
+    "Insight For Impact: confirm event, date, achievement, and whether it is related to GreenOPS AI.",
+    "Language levels are self-reported. Add a phone number only if desired and confirmed.",
+    "Portfolio URL returned HTTP 200 on 26 September 2026. This local upgrade has not been published; deploy the built files to update the QR destination content.",
+    "LinkedIn blocks automated verification with HTTP 999; URL matches the supplied profile PDF.",
+    "ODDO additional tools: confirm which were directly used versus observed, and the depth of Kafka, Node.js, WebSockets, Spring Batch, Camunda, OpenShift, Helm, Nginx, Keycloak, ELK and bot interaction. All are presented as environment/exposure until clarified."
+  ],
+  "pdf_editorial": [
+    "Exactly one A4 page with 9.5pt body text. Main signals: PFE 2027, ODDO BHF, Ooredoo, GreenOPS award, Urban Mobility, Data/BI/SAP.",
+    "Recordati, Tunisie Telecom, EduTechHub and earlier secondary education remain in the portfolio; omitted from the PDF to prioritize evidenced recent work.",
+    "Business Performance Prediction and ML Superstore share one concise PDF line; separate detailed cards remain on the website.",
+    "Only the two most relevant named credentials are in the PDF; the full certification list stays on the website.",
+    "ODDO implementation tools remain tied to contribution bullets. Apache Kafka and OpenShift appear only as environment exposure in the PDF; the other additional tools are categorized in the portfolio.",
+    "Detailed NLP/lifecycle work, full team stack and team names remain on the website. No GreenOPS confidential tools or LLM ownership is claimed.",
+    "Unconfirmed dates and credentials are retained in owner review documentation, excluded from the public page rather than shown as placeholders.",
+    "Root website and its two-page PDF remain untouched as the previous version. The new deliverables are inside CvWebsite."
+  ],
+  "cv": {
+    "skills": [
+      {
+        "category": "Data & BI",
+        "items": [
+          "Python",
+          "SQL",
+          "PostgreSQL",
+          "ETL",
+          "Power BI",
+          "DAX",
+          "Pandas"
+        ]
+      },
+      {
+        "category": "ML / Integration",
+        "items": [
+          "scikit-learn",
+          "FastAPI",
+          "n8n",
+          "Model evaluation"
+        ]
+      },
+      {
+        "category": "Engineering",
+        "items": [
+          ".NET / EF Core",
+          "Angular",
+          "Spring Boot",
+          "REST APIs",
+          "Git"
+        ]
+      },
+      {
+        "category": "SAP / ERP (coursework)",
+        "items": [
+          "SAP BW",
+          "ABAP / Fiori",
+          "AWS Fundamentals",
+          "DevOps",
+          "MLOps"
+        ]
+      }
+    ],
+    "experience_ids": [
+      "oddo",
+      "ooredoo"
+    ],
+    "certification_indexes": [
+      0,
+      1
+    ]
+  }
+}

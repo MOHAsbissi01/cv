@@ -1,0 +1,62 @@
+{
+  "original_preserved": true,
+  "email": "sbissi.mohamed@esprit.tn",
+  "browser": [
+    {
+      "width": 1600,
+      "overflow": false,
+      "menu": "desktop"
+    },
+    {
+      "width": 1280,
+      "overflow": false,
+      "menu": "desktop"
+    },
+    {
+      "width": 1024,
+      "overflow": false,
+      "menu": "desktop"
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "menu": "passed"
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "menu": "passed"
+    },
+    {
+      "width": 320,
+      "overflow": false,
+      "menu": "passed"
+    }
+  ],
+  "qr": "https://mohasbissi01.github.io/cv/",
+  "javascript_errors": [],
+  "http_errors": [],
+  "pdf": {
+    "pages": 1,
+    "format": "A4",
+    "selectable": true,
+    "words": 414,
+    "section_order_valid": true,
+    "bottom": 751.157195,
+    "height": 841.91998,
+    "links": [
+      "https://mohasbissi01.github.io/cv/",
+      "mailto:sbissi.mohamed@esprit.tn",
+      "https://www.linkedin.com/in/mohamed-sbissi",
+      "https://github.com/MOHAsbissi01",
+      "https://mohasbissi01.github.io/cv/",
+      "https://github.com/HeniRidene/Esprit-PABI-4ERPBI5-2526-BITribe",
+      "https://github.com/MOHAsbissi01/Business-Performance-Prediction-ML",
+      "https://github.com/MOHAsbissi01/streamlit-ml-superstore",
+      "https://github.com/MOHAsbissi01/streamlit-ml-superstore"
+    ]
+  },
+  "main_stack_vs_environment": "passed",
+  "downloads_and_filters": "passed",
+  "public_placeholders": "none"
+}

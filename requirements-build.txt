@@ -1,0 +1,5 @@
+qrcode[pil]>=8.2,<9
+playwright>=1.50,<2
+pypdf>=5,<7
+beautifulsoup4>=4.12,<5
+zxing-cpp>=2.3,<4

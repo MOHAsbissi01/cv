@@ -1,0 +1,46 @@
+Portfolio
+MOHAMED SBISSI
+Computer Engineering Student
+Data Engineering · Business Intelligence · SAP | Seeking PFE 2027
+sbissi.mohamed@esprit.tn | Tunis, Tunisia
+linkedin.com/in/mohamed-sbissi · github.com/MOHAsbissi01
+mohasbissi01.github.io/cv/
+PROFESSIONAL SUMMARY
+Final-year ERP/BI engineering student at ESPRIT seeking PFE 2027. Builds reliable data pipelines, SQL reporting and decision-
+ready BI, with applied software/ML integration and current SAP BW / ABAP-Fiori coursework.
+EXPERIENCE
+ODDO BHF | Software Development Factory Intern Jun 2026 - Aug 2026
+Prepared HR data in PostgreSQL across 12 business domains; created seven SQL reporting views with data quality checks.
+Built a four-page Power BI report with a semantic model and DAX for attendance, training hours and satisfaction.
+Implemented .NET/EF Core APIs and Angular analytics; integrated Python ML and validated .NET, Python and Angular tests.
+Main implementation: PostgreSQL / SQL, Power BI / DAX, .NET / EF Core, Angular, Python
+Environment exposure: Apache Kafka, OpenShift
+Ooredoo Tunisie | Software Engineering Intern Jun 2025 - Jul 2025
+Developed Spring Boot/Angular B2B components and Power BI dashboards for telecom contract and service tracking.
+Integrated REST data sources and ETL pipelines; translated business requirements into technical specifications.
+AWARDS / COMPETITIONS
+GreenOPS AI - 2nd Place - 2,000 TND prize
+Data Engineer | AI competition | Pharmaceutical sustainability
+Collected and integrated multi-source data into a preparation pipeline for AI training.
+Prepared training-ready datasets aligned with pharmaceutical business needs; contributed data/prediction integration.
+Tools withheld under NDA. LLM development delivered by teammates.
+SELECTED PROJECTS
+Intelligent Urban Mobility | Data / ML team contributor Feb 2026 - May 2026
+Contributed Python data/feature pipelines and ML training/evaluation; exported BI-ready prediction datasets.
+Contributed FastAPI prediction/retraining integration and n8n result persistence.
+Tech: Python, scikit-learn, FastAPI, n8n · GitHub / project evidence
+Business Performance Prediction / ML Superstore (Nov 2025 - Dec 2025)
+Applied CRISP-DM; built a Streamlit prediction app with model comparison and business insights. Analysis repository / Application
+repository
+TECHNICAL SKILLS
+Data & BI: Python / SQL / PostgreSQL / ETL / Power BI / DAX / Pandas
+ML / Integration: scikit-learn / FastAPI / n8n / Model evaluation
+Engineering: .NET / EF Core / Angular / Spring Boot / REST APIs / Git
+SAP / ERP (coursework): SAP BW / ABAP / Fiori / AWS Fundamentals / DevOps / MLOps
+EDUCATION
+ESPRIT | Computer Engineering - ERP / Business Intelligence
+Sep 2022 - Present | Final-year student; degree in progress.
+CERTIFICATIONS
+Fundamentals of Deep Learning | Introduction to Transformer-Based Natural Language Processing
+LANGUAGES
+Arabic: Native | French: B2 | English: B2 | Spanish: A2
