@@ -1,0 +1,50 @@
+{
+  "pages": 1,
+  "format": "A4",
+  "original_files_unchanged": true,
+  "original_hashes": {
+    "index.html": "c9d4a8dfb8d1a94e687942735016cea0abe89287ea56c79aaeff49199162f467",
+    "cv.html": "5417e05cf441db17f2d1109961f3f41d5f4db82dfa87fe9ab74b4444de5fafe1",
+    "assets/cv/CV.pdf": "24713798134eb65159e8ae77b264e067ff2f352e2d1e02db78a2abc2f91d29da",
+    "data/profile.json": "366eab2bfde48dadeb981ab9f80a7b340339a04290706bba38bc3c733cbf32de",
+    "css/cv.css": "15bba297aa365b4f7de8d9b84d5def1f3195cc5ba52f051c89027de2ccab145d",
+    "scripts/build.py": "a6c574a03608dc7c790513b42bb49bc25040ab5cf68ae5f730c46e39856e3a9f"
+  },
+  "body_font_pt": 9.5,
+  "selectable_text": true,
+  "bullet_verbs": [
+    "Consolidated",
+    "Designed",
+    "Implemented",
+    "Developed",
+    "Integrated",
+    "Collected",
+    "Prepared",
+    "Contributed",
+    "Contributed",
+    "Applied",
+    "Deployed"
+  ],
+  "verified_metrics": [
+    "12 domains",
+    "7 SQL views",
+    "4 report pages",
+    "25 DAX measures",
+    "10 analytics endpoints"
+  ],
+  "pdf_word_bounds": "passed",
+  "bottom": 763.157195,
+  "page_height": 841.91998,
+  "qr_decoded": "https://mohasbissi01.github.io/cv/",
+  "clickable_links": [
+    "https://mohasbissi01.github.io/cv/",
+    "mailto:sbissi.mohamed@esprit.tn",
+    "https://www.linkedin.com/in/mohamed-sbissi",
+    "https://github.com/MOHAsbissi01",
+    "https://mohasbissi01.github.io/cv/",
+    "https://github.com/HeniRidene/Esprit-PABI-4ERPBI5-2526-BITribe",
+    "https://github.com/MOHAsbissi01/Business-Performance-Prediction-ML",
+    "https://github.com/MOHAsbissi01/streamlit-ml-superstore"
+  ],
+  "target_posting_supplied": false
+}

@@ -1,10 +1,11 @@
-"""Build the new portfolio and exactly-one-page CV from data/profile.json."""
+"""Build the current portfolio; optionally regenerate approved CV-2, preserving CV.pdf."""
 from pathlib import Path
 import argparse, hashlib, html, io, json, sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT.parent/".build-tools"))
 from bs4 import BeautifulSoup
 from render_portfolio import portfolio as render_previous_structure
+from design import polish
 E=html.escape
 
 def fragment(markup):
@@ -109,6 +110,7 @@ def portfolio(d):
         if a.get("href") in [p["linkedin"],p["github"]]:a["class"]=["button","social"]
     footer=soup.select_one("footer")
     footer.clear();footer.append(fragment(f'<div class="footer-inner"><span>{E(p["name"])} &middot; {E(p["objective"])}</span><div><a href="cv.html">Printable CV</a>{external(p["github"],"GitHub")}{external(p["linkedin"],"LinkedIn")}</div></div>'))
+    soup=polish(soup)
     result=str(soup)
     for placeholder in ["TODO","REVIEW:","Date to confirm","requires confirmation"]:
         if placeholder in soup.body.get_text():raise RuntimeError("Public placeholder leaked: "+placeholder)
@@ -152,26 +154,17 @@ def main():
     q=qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_M,box_size=8,border=4);q.add_data(d["personal"]["portfolio"]);q.make(fit=True)
     q.make_image(fill_color="black",back_color="white").save(ROOT/"assets/qr/portfolio-qr.png")
     q.make_image(image_factory=SvgPathImage).save(ROOT/"assets/qr/portfolio-qr.svg")
-    (ROOT/"index.html").write_text(portfolio(d),encoding="utf-8");(ROOT/"cv.html").write_text(cv(d),encoding="utf-8")
+    (ROOT/"index.html").write_text(portfolio(d),encoding="utf-8")
+    # CV-2 is the approved current version; preserve the original CV.pdf.
+    if args.pdf:
+        from build_cv2 import main as build_current_cv
+        build_current_cv()
+    current=ROOT/"cv-2.html"
+    if not current.exists():raise RuntimeError("Generate the approved CV-2 with scripts/build_cv2.py first.")
+    (ROOT/"cv.html").write_text(current.read_text(encoding="utf-8"),encoding="utf-8")
     facts="# FACTS TO VERIFY\n\n"+"\n".join("- "+x for x in d["facts_to_verify"])+"\n\n## PDF editorial decisions\n\n"+"\n".join("- "+x for x in d["pdf_editorial"])+"\n"
     (ROOT/"FACTS_TO_VERIFY.md").write_text(facts,encoding="utf-8")
-    if args.pdf:
-        from playwright.sync_api import sync_playwright
-        from pypdf import PdfReader
-        with sync_playwright() as pw:
-            browser=pw.chromium.launch(headless=True)
-            try:
-                page=browser.new_page();page.goto((ROOT/"cv.html").as_uri(),wait_until="load");page.emulate_media(media="print")
-                pdf=page.pdf(format="A4",prefer_css_page_size=True,print_background=True)
-                reader=PdfReader(io.BytesIO(pdf))
-                if len(reader.pages)!=1:raise RuntimeError(f"PDF has {len(reader.pages)} pages; MUST equal 1.")
-                text=reader.pages[0].extract_text()
-                for term in ["ODDO BHF","Ooredoo","GreenOPS AI","2nd Place","2,000 TND",d["personal"]["email"],"Seeking PFE 2027","Technical Skills","ESPRIT"]:
-                    if term.casefold() not in text.casefold():raise RuntimeError("Missing PDF content: "+term)
-                (ROOT/"assets/cv/CV.pdf").write_bytes(pdf);(ROOT/"validation/cv-text.txt").write_text(text,encoding="utf-8")
-                print("CV.pdf generated: EXACTLY 1 A4 PAGE. Text extraction passed.")
-            finally:browser.close()
-    manifest={"profile_sha256":hashlib.sha256((ROOT/"data/profile.json").read_bytes()).hexdigest(),"portfolio_url":d["personal"]["portfolio"],"cv":"assets/cv/CV.pdf","page_requirement":1}
+    manifest={"profile_sha256":hashlib.sha256((ROOT/"data/profile.json").read_bytes()).hexdigest(),"portfolio_url":d["personal"]["portfolio"],"cv":"assets/cv/CV-2.pdf","previous_cv":"assets/cv/CV.pdf","page_requirement":1}
     (ROOT/"data/build-manifest.json").write_text(json.dumps(manifest,indent=2)+"\n")
     print("Built CvWebsite, printable CV, QR and owner review notes.")
 

@@ -18,7 +18,7 @@
 
 - Exactly one A4 page with 9.5pt body text. Main signals: PFE 2027, ODDO BHF, Ooredoo, GreenOPS award, Urban Mobility, Data/BI/SAP.
 - Recordati, Tunisie Telecom, EduTechHub and earlier secondary education remain in the portfolio; omitted from the PDF to prioritize evidenced recent work.
-- Business Performance Prediction and ML Superstore share one concise PDF line; separate detailed cards remain on the website.
+- Business Performance Prediction and ML Superstore use two concise results-focused bullets in CV-2; separate detailed cards remain on the website.
 - Only the two most relevant named credentials are in the PDF; the full certification list stays on the website.
 - ODDO implementation tools remain tied to contribution bullets. Apache Kafka and OpenShift appear only as environment exposure in the PDF; the other additional tools are categorized in the portfolio.
 - Detailed NLP/lifecycle work, full team stack and team names remain on the website. No GreenOPS confidential tools or LLM ownership is claimed.

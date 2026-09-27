@@ -34,15 +34,17 @@
     }
   ],
   "qr": "https://mohasbissi01.github.io/cv/",
+  "motion": "scroll reveal and live reduced-motion preference passed",
   "javascript_errors": [],
   "http_errors": [],
+  "language": "first visit dialog, French content, seven responsive widths, saved preference, switching, Escape and focus passed",
   "pdf": {
     "pages": 1,
     "format": "A4",
     "selectable": true,
-    "words": 414,
+    "words": 441,
     "section_order_valid": true,
-    "bottom": 751.157195,
+    "bottom": 763.157195,
     "height": 841.91998,
     "links": [
       "https://mohasbissi01.github.io/cv/",
@@ -52,7 +54,6 @@
       "https://mohasbissi01.github.io/cv/",
       "https://github.com/HeniRidene/Esprit-PABI-4ERPBI5-2526-BITribe",
       "https://github.com/MOHAsbissi01/Business-Performance-Prediction-ML",
-      "https://github.com/MOHAsbissi01/streamlit-ml-superstore",
       "https://github.com/MOHAsbissi01/streamlit-ml-superstore"
     ]
   },

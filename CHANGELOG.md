@@ -11,3 +11,12 @@
 - Moved unconfirmed dates, award metadata and ownership review notes into owner documentation; public pages contain no TODO/REVIEW placeholders.
 - Added Open Graph, canonical URL, theme color and Person metadata, using the verified portfolio destination.
 - Added responsive, keyboard, download, one-page PDF, QR, ATS text and preserved-version checks.
+
+## Approved CV-2 and portfolio presentation
+
+- Made CV-2 the default for every portfolio download and printable link; preserved CV.pdf, cv-v1.html and the earlier profile source.
+- Updated the portfolio with verified ODDO scope and clearer project business value.
+- Added an editorial dark hero, light content sections, native workflow illustrations, visual project cards, premium typography and responsive spacing.
+- Added progressive scroll reveals, subtle hover transitions and reading progress, with reduced-motion and no-JS support.
+- Updated the build and validation workflow to use CV-2 without overwriting the earlier PDF.
+- User-reported CV-2 score: 88. No independent new ATS score is claimed.

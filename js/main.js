@@ -9,7 +9,7 @@ toggle.addEventListener("click",()=>{
   toggle.setAttribute("aria-expanded",String(open)); nav.classList.toggle("is-open",open);
 });
 nav.addEventListener("click",event=>{if(event.target.closest("a"))closeMenu();});
-document.addEventListener("keydown",event=>{if(event.key==="Escape" && toggle.getAttribute("aria-expanded")==="true"){closeMenu();toggle.focus();}});
+document.addEventListener("keydown",event=>{if(event.key==="Escape" && !document.querySelector('.language-dialog[open]') && toggle.getAttribute("aria-expanded")==="true"){closeMenu();toggle.focus();}});
 window.matchMedia("(min-width: 781px)").addEventListener("change",closeMenu);
 const filters=document.querySelectorAll("[data-filter]");
 filters.forEach(button=>button.addEventListener("click",()=>{
@@ -29,3 +29,34 @@ if("IntersectionObserver" in window){
   },{rootMargin:"-15% 0px -60% 0px",threshold:0});
   document.querySelectorAll("#experience,#projects,#skills,#education").forEach(section=>observer.observe(section));
 }
+
+// Motion enhances the page; content stays available without JavaScript.
+const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+const revealItems = document.querySelectorAll(".section-heading,.experience,.project,.skill-group,.featured-achievement,.contact-panel");
+let revealObserver;
+function configureMotion(){
+  if(revealObserver) revealObserver.disconnect();
+  document.documentElement.classList.toggle("motion-ready",!motionPreference.matches && "IntersectionObserver" in window);
+  if(motionPreference.matches || !("IntersectionObserver" in window)){
+    revealItems.forEach(item=>item.classList.add("is-visible"));
+    return;
+  }
+  revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add("is-visible");revealObserver.unobserve(entry.target);}
+  }),{threshold:0.05,rootMargin:"0px 0px 25px 0px"});
+  revealItems.forEach(item=>{item.classList.add("reveal");revealObserver.observe(item);});
+}
+configureMotion();
+motionPreference.addEventListener("change",configureMotion);
+window.addEventListener("beforeprint",()=>revealItems.forEach(item=>item.classList.add("is-visible")));
+const progress=document.querySelector(".reading-progress");
+let scrollPending=false;
+function updateProgress(){
+  const range=document.documentElement.scrollHeight-window.innerHeight;
+  if(progress)progress.style.transform=`scaleX(${range>0?Math.min(1,Math.max(0,window.scrollY/range)):0})`;
+  document.querySelector(".site-header").classList.toggle("scrolled",window.scrollY>20);
+  scrollPending=false;
+}
+window.addEventListener("scroll",()=>{if(!scrollPending){scrollPending=true;requestAnimationFrame(updateProgress);}},{passive:true});
+window.addEventListener("resize",updateProgress);
+updateProgress();

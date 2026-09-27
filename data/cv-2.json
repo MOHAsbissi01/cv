@@ -1,0 +1,85 @@
+{
+  "name": "CV-2",
+  "target": "General Data Engineering / BI / SAP PFE 2027; no new specific posting supplied.",
+  "summary": "Final-year ERP/BI engineering student at ESPRIT seeking PFE 2027. Built PostgreSQL reporting, Power BI analytics and tested API/ML integration for HR decisions. Currently studying SAP BW and ABAP/Fiori.",
+  "experience": {
+    "oddo": [
+      "Consolidated Excel/CSV HR data across 12 domains in PostgreSQL; created 7 SQL reporting views with data quality checks.",
+      "Designed a 4-page Power BI report with 25 DAX measures to track attendance, training hours and satisfaction.",
+      "Implemented 10 authenticated .NET/EF Core analytics endpoints and Angular views; integrated Python ML and tested application components."
+    ],
+    "ooredoo": [
+      "Developed Spring Boot/Angular B2B components and Power BI dashboards for contract and service KPI visibility.",
+      "Integrated REST sources and ETL pipelines to consolidate telecom data; translated business needs into technical specifications."
+    ]
+  },
+  "projects": {
+    "urban": [
+      "Contributed Python data/feature pipelines and ML evaluation for BI-ready mobility, safety and environmental insights.",
+      "Contributed FastAPI/n8n integration for predictions, retraining and persisted outputs in the team ML service."
+    ],
+    "greenops": [
+      "Collected and integrated multi-source data into a preparation pipeline for AI training.",
+      "Prepared training-ready datasets aligned with pharmaceutical business needs; contributed data/prediction integration."
+    ],
+    "business": [
+      "Applied CRISP-DM and evaluated supervised/unsupervised models for sales and profitability insights.",
+      "Deployed a Streamlit app with model comparison, predictions and interactive summaries for business analysis."
+    ]
+  },
+  "skills": [
+    {
+      "category": "Data & BI",
+      "items": [
+        "SQL",
+        "PostgreSQL",
+        "ETL / ELT",
+        "Power BI",
+        "DAX",
+        "Data modeling"
+      ]
+    },
+    {
+      "category": "ML & Programming",
+      "items": [
+        "Python",
+        "Pandas",
+        "scikit-learn",
+        "FastAPI",
+        "n8n"
+      ]
+    },
+    {
+      "category": "Application Engineering",
+      "items": [
+        ".NET / EF Core",
+        "Angular",
+        "Spring Boot",
+        "REST APIs",
+        "Git"
+      ]
+    },
+    {
+      "category": "Cloud & DevOps (coursework)",
+      "items": [
+        "AWS Fundamentals",
+        "DevOps",
+        "MLOps"
+      ]
+    },
+    {
+      "category": "ERP & SAP (coursework)",
+      "items": [
+        "SAP BW",
+        "ABAP / Fiori"
+      ]
+    }
+  ],
+  "evidence": {
+    "oddo_metrics": "Internship journal page 6: 12 business domains (pages 3/6), 7 views, 4 report pages, 25 DAX measures, 10 authenticated analytics endpoints. These are deliverable scope, not measured time savings or performance improvements.",
+    "ooredoo": "Profile (3).pdf: B2B platform, Power BI contract/service KPIs, REST integration, backend ETL and business specifications. No supported volume, latency or time-saving metric.",
+    "urban": "Existing project contribution evidence; conservative 'Contributed' ownership wording retained. Business value describes intended use, not verified deployment adoption.",
+    "business": "User-provided known work and personal Streamlit application contribution; sales/profitability context from the previously audited repository.",
+    "keyword_limit": "No unsupported Airflow, Spark, Azure, Databricks or professional SAP expertise added. Exact posting-specific tailoring requires a supplied PFE posting."
+  }
+}

@@ -10,8 +10,8 @@
     "github": "https://github.com/MOHAsbissi01",
     "portfolio": "https://mohasbissi01.github.io/cv/",
     "portfolio_verified_on": "2026-09-26",
-    "summary": "I'm a final-year Computer Engineering student at ESPRIT, specializing in ERP and Business Intelligence. At ODDO BHF, I connected HR data preparation, PostgreSQL reporting and Power BI analytics with tested application and ML integration. My focus: turning complex business needs into dependable data and useful insights. Now seeking a PFE internship in 2027, while deepening my knowledge of SAP BW, ABAP/Fiori, AWS and MLOps.",
-    "cv_summary": "Final-year ERP/BI engineering student at ESPRIT seeking PFE 2027. Built PostgreSQL reporting, Power BI analytics and tested API/ML integration for HR decisions. Currently studying SAP BW and ABAP/Fiori."
+    "summary": "Final-year Computer Engineering student at ESPRIT, specializing in ERP and Business Intelligence and seeking a 2027 PFE internship. Built HR data preparation workflows, PostgreSQL reporting views, and Power BI dashboards with DAX at ODDO BHF. Combines SQL, Python, and software integration with academic ML projects. Currently studying SAP BW, ABAP/Fiori, AWS, DevOps, and MLOps.",
+    "cv_summary": "Final-year ERP/BI engineering student at ESPRIT seeking PFE 2027. Builds reliable data pipelines, SQL reporting and decision-ready BI, with applied software/ML integration and current SAP BW / ABAP-Fiori coursework."
   },
   "experience": [
     {
@@ -24,9 +24,9 @@
       "context": "HR analytics and employee lifecycle application; internship from 9 June to 31 August 2026.",
       "contributions": [
         "Consolidated Excel/CSV HR sources in PostgreSQL, checking duplicates, missing values, keys, and record consistency.",
-        "Structured an HR model across 12 business domains and created 7 SQL reporting views for participation, satisfaction and employee history.",
-        "Designed a 4-page Power BI training report with a semantic model and 25 DAX measures for attendance, training hours and satisfaction.",
-        "Implemented 10 authenticated .NET/EF Core analytics endpoints and Angular views; integrated a Python ML service and validated .NET, Python and Angular tests.",
+        "Structured an HR model across 12 business domains and created seven SQL reporting views for participation, satisfaction, and employee history.",
+        "Built a four-page Power BI training report with a semantic model and DAX measures for attendance, training hours, and satisfaction.",
+        "Implemented authenticated .NET/EF Core endpoints and Angular analytics views; integrated a Python ML service and validated .NET, Python, and Angular tests.",
         "Developed French/English feedback sentiment scoring, batch processing, and unit tests; compared scores with human ratings.",
         "Implemented employee lifecycle workflows, role-based access, data quality tracking, and audit history; documented delivered modules."
       ],
@@ -48,9 +48,9 @@
       ],
       "source": "Journal_de_stage_Mohamed_SBISSI_31-08-2026 (1)jjjjjjjjjjjjj.pdf",
       "cv_contributions": [
-        "Consolidated Excel/CSV HR data across 12 domains in PostgreSQL; created 7 SQL reporting views with data quality checks.",
-        "Designed a 4-page Power BI report with 25 DAX measures to track attendance, training hours and satisfaction.",
-        "Implemented 10 authenticated .NET/EF Core analytics endpoints and Angular views; integrated Python ML and tested application components."
+        "Prepared HR data in PostgreSQL across 12 business domains; created seven SQL reporting views with data quality checks.",
+        "Built a four-page Power BI report with a semantic model and DAX for attendance, training hours and satisfaction.",
+        "Implemented .NET/EF Core APIs and Angular analytics; integrated Python ML and validated .NET, Python and Angular tests."
       ],
       "environment": [
         {
@@ -133,7 +133,7 @@
       "context": "B2B telecom platform for partner companies.",
       "contributions": [
         "Developed Spring Boot and Angular components for a B2B platform centralizing telecom services and partner offerings.",
-        "Designed Power BI dashboards to give account teams visibility into contracts and service KPIs.",
+        "Designed Power BI dashboards for contract tracking and service management.",
         "Integrated heterogeneous sources through REST APIs and backend ETL pipelines; translated business requirements into technical specifications.",
         "Applied Git branching and modular architecture in the development team's continuous integration environment."
       ],
@@ -151,8 +151,8 @@
       ],
       "source": "Profile (3).pdf",
       "cv_contributions": [
-        "Developed Spring Boot/Angular B2B components and Power BI dashboards for contract and service KPI visibility.",
-        "Integrated REST sources and ETL pipelines to consolidate telecom data; translated business needs into technical specifications."
+        "Developed Spring Boot/Angular B2B components and Power BI dashboards for telecom contract and service tracking.",
+        "Integrated REST data sources and ETL pipelines; translated business requirements into technical specifications."
       ]
     },
     {
@@ -185,7 +185,7 @@
       "organization": "ESPRIT",
       "role": "Data / ML contributor (team project)",
       "category": "Data & ML",
-      "context": "Team decision-support platform connecting data preparation and machine learning with BI-ready insights for sustainable mobility, environmental impact and urban safety.",
+      "context": "Team decision-support platform for sustainable mobility, environmental impact, and urban safety.",
       "contributions": [
         "Contributed Python data-loading and feature-engineering pipelines for ecological, mobility, and safety analyses.",
         "Contributed training and evaluation modules for regression, forecasting, clustering, and anomaly detection; exported prediction datasets for BI reporting.",
@@ -227,8 +227,8 @@
         "https://github.com/HeniRidene/Esprit-PABI-4ERPBI5-2526-BITribe/commit/efa9e52105"
       ],
       "cv_contributions": [
-        "Contributed Python data/feature pipelines and ML evaluation for BI-ready mobility, safety and environmental insights.",
-        "Contributed FastAPI/n8n integration for predictions, retraining and persisted outputs in the team ML service."
+        "Contributed Python data/feature pipelines and ML training/evaluation; exported BI-ready prediction datasets.",
+        "Contributed FastAPI prediction/retraining integration and n8n result persistence."
       ]
     },
     {
@@ -273,7 +273,7 @@
       "organization": "Academic project",
       "role": "Data Science / ML contributor",
       "category": "Data & ML",
-      "context": "Predictive analysis to explore sales and profitability patterns, compare models and turn business data into understandable insights.",
+      "context": "Business-data analysis and predictive insights for sales and profitability.",
       "contributions": [
         "Applied CRISP-DM to structure data exploration, preparation, and predictive analysis.",
         "Explored supervised and unsupervised learning and evaluated models to translate business data into predictive insights."
@@ -295,10 +295,6 @@
       "evidence": [
         "User-provided known work",
         "https://github.com/MOHAsbissi01/Business-Performance-Prediction-ML"
-      ],
-      "cv_contributions": [
-        "Applied CRISP-DM and evaluated supervised/unsupervised models for sales and profitability insights.",
-        "Deployed a Streamlit app with model comparison, predictions and interactive summaries for business analysis."
       ]
     },
     {
@@ -426,28 +422,31 @@
       ]
     },
     {
-      "category": "ERP & SAP",
+      "category": "SAP / ERP & Cloud",
       "level": "Current coursework",
       "items": [
         "SAP BW",
         "ABAP / Fiori",
-        "CRM"
-      ]
-    },
-    {
-      "category": "Cloud & DevOps",
-      "level": "Current coursework",
-      "items": [
+        "CRM",
         "AWS Fundamentals",
+        "Big Data Analytics",
         "DevOps",
-        "MLOps",
-        "Big Data Analytics"
+        "MLOps"
+      ],
+      "cv_items": [
+        "SAP BW",
+        "ABAP / Fiori",
+        "AWS Fundamentals",
+        "Big Data",
+        "DevOps",
+        "MLOps"
       ]
     },
     {
-      "category": "AI & Responsible Technology",
+      "category": "Additional learning",
       "level": "Foundations / current coursework",
       "items": [
+        "OpenShift / Kubernetes fundamentals",
         "Deep learning",
         "Text and graph learning",
         "Blockchain coursework",
@@ -535,7 +534,7 @@
   "pdf_editorial": [
     "Exactly one A4 page with 9.5pt body text. Main signals: PFE 2027, ODDO BHF, Ooredoo, GreenOPS award, Urban Mobility, Data/BI/SAP.",
     "Recordati, Tunisie Telecom, EduTechHub and earlier secondary education remain in the portfolio; omitted from the PDF to prioritize evidenced recent work.",
-    "Business Performance Prediction and ML Superstore use two concise results-focused bullets in CV-2; separate detailed cards remain on the website.",
+    "Business Performance Prediction and ML Superstore share one concise PDF line; separate detailed cards remain on the website.",
     "Only the two most relevant named credentials are in the PDF; the full certification list stays on the website.",
     "ODDO implementation tools remain tied to contribution bullets. Apache Kafka and OpenShift appear only as environment exposure in the PDF; the other additional tools are categorized in the portfolio.",
     "Detailed NLP/lifecycle work, full team stack and team names remain on the website. No GreenOPS confidential tools or LLM ownership is claimed.",
@@ -547,26 +546,26 @@
       {
         "category": "Data & BI",
         "items": [
+          "Python",
           "SQL",
           "PostgreSQL",
-          "ETL / ELT",
+          "ETL",
           "Power BI",
           "DAX",
-          "Data modeling"
+          "Pandas"
         ]
       },
       {
-        "category": "ML & Programming",
+        "category": "ML / Integration",
         "items": [
-          "Python",
-          "Pandas",
           "scikit-learn",
           "FastAPI",
-          "n8n"
+          "n8n",
+          "Model evaluation"
         ]
       },
       {
-        "category": "Application Engineering",
+        "category": "Engineering",
         "items": [
           ".NET / EF Core",
           "Angular",
@@ -576,18 +575,13 @@
         ]
       },
       {
-        "category": "Cloud & DevOps (coursework)",
+        "category": "SAP / ERP (coursework)",
         "items": [
+          "SAP BW",
+          "ABAP / Fiori",
           "AWS Fundamentals",
           "DevOps",
           "MLOps"
-        ]
-      },
-      {
-        "category": "ERP & SAP (coursework)",
-        "items": [
-          "SAP BW",
-          "ABAP / Fiori"
         ]
       }
     ],
@@ -598,8 +592,6 @@
     "certification_indexes": [
       0,
       1
-    ],
-    "active_pdf": "assets/cv/CV-2.pdf",
-    "previous_pdf": "assets/cv/CV.pdf"
+    ]
   }
 }

@@ -1,6 +1,6 @@
 """Check the new portfolio, immutable previous version, and exactly-one-page CV."""
 from pathlib import Path
-import hashlib, io, json, subprocess, sys, threading, urllib.parse
+import hashlib, io, json, shutil, subprocess, sys, threading, urllib.parse
 from functools import partial
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from xml.etree import ElementTree as ET
@@ -21,7 +21,10 @@ def main():
     manifest=json.loads((ROOT/"data/build-manifest.json").read_text())
     assert manifest["profile_sha256"]==hashlib.sha256((ROOT/"data/profile.json").read_bytes()).hexdigest()
     assert data["personal"]["email"]=="sbissi.mohamed@esprit.tn"
-    for file in ["index.html","cv.html"]:
+    previous=json.loads((out/"cv-2/report.json").read_text(encoding="utf-8"))
+    assert hashlib.sha256((ROOT/"assets/cv/CV.pdf").read_bytes()).hexdigest()==previous["original_hashes"]["assets/cv/CV.pdf"]
+    assert manifest["cv"]=="assets/cv/CV-2.pdf"
+    for file in ["index.html","cv.html","cv-2.html"]:
         soup=BeautifulSoup((ROOT/file).read_text(encoding="utf-8"),"html.parser")
         text=soup.body.get_text(" ",strip=True)
         ids=[t["id"] for t in soup.select("[id]")];assert len(ids)==len(set(ids))
@@ -37,6 +40,9 @@ def main():
         assert data["personal"]["email"] in text
         assert all(a["href"]=="mailto:"+data["personal"]["email"] for a in soup.select('a[href^="mailto:"]'))
     site=BeautifulSoup((ROOT/"index.html").read_text(),"html.parser")
+    assert site.select_one('link[href="css/premium.css"]')
+    assert all(a['href']=='assets/cv/CV-2.pdf' for a in site.select('a[download]'))
+    assert len(site.select('.project-art'))==4
     env=site.select_one("#experience-oddo .technical-environment")
     assert env and "Technical environment / exposure" in env.get_text()
     oddo=next(x for x in data["experience"] if x["id"]=="oddo")
@@ -64,11 +70,15 @@ def main():
             browser=pw.chromium.launch()
             try:
                 page=browser.new_page(accept_downloads=True);errors=[];bad=[]
+                page.emulate_media(reduced_motion="reduce")
                 page.on("pageerror",lambda e:errors.append(str(e)))
                 page.on("response",lambda r:bad.append((r.url,r.status)) if r.status>=400 else None)
                 for width in [1600,1280,1024,768,390,320]:
                     page.set_viewport_size({"width":width,"height":1000})
                     page.goto(origin+"/index.html",wait_until="networkidle")
+                    if page.locator('.language-dialog').is_visible():
+                        page.screenshot(path=str(out/'language-desktop.png'))
+                        page.locator('[data-choose-language="en"]').click()
                     assert not page.evaluate("document.documentElement.scrollWidth>innerWidth"),width
                     assert page.locator("h1").is_visible()
                     if width==1280:
@@ -98,8 +108,8 @@ def main():
                 with page.expect_download() as info:
                     page.get_by_role("link",name="Download CV",exact=True).nth(1).click()
                 download=info.value
-                assert download.suggested_filename=="Mohamed-Sbissi-CV.pdf"
-                assert Path(download.path()).read_bytes()==(ROOT/"assets/cv/CV.pdf").read_bytes()
+                assert download.suggested_filename=="Mohamed-Sbissi-CV-2.pdf"
+                assert Path(download.path()).read_bytes()==(ROOT/"assets/cv/CV-2.pdf").read_bytes()
                 page.emulate_media(reduced_motion="reduce")
                 assert page.evaluate('getComputedStyle(document.documentElement).scrollBehavior')=="auto"
                 page.goto(origin+"/cv.html",wait_until="networkidle")
@@ -107,20 +117,55 @@ def main():
                 assert page.locator(".cv-toolbar").is_hidden()
                 page.screenshot(path=str(out/"cv-print.png"),full_page=True)
                 assert not errors,errors;assert not bad,bad
+                page.emulate_media(media="screen",reduced_motion="no-preference")
+                page.set_viewport_size({"width":1280,"height":900})
+                page.goto(origin+"/index.html",wait_until="networkidle")
+                assert page.locator('html').evaluate("e=>e.classList.contains('motion-ready')")
+                page.locator('#skills').scroll_into_view_if_needed()
+                page.wait_for_timeout(800)
+                assert page.locator('#skills .skill-group').first.evaluate("e=>getComputedStyle(e).opacity")=='1'
+                page.emulate_media(reduced_motion="reduce")
+                assert page.locator('#experience-oddo').evaluate("e=>getComputedStyle(e).opacity")=='1'
+                report["motion"]="scroll reveal and live reduced-motion preference passed"
                 report["javascript_errors"]=errors;report["http_errors"]=bad
                 nojs=browser.new_context(java_script_enabled=False,viewport={"width":390,"height":900})
                 p=nojs.new_page();p.goto(origin+"/index.html",wait_until="networkidle")
                 assert p.locator("#main-navigation").is_visible()
                 assert p.locator(".project:visible").count()==4
                 nojs.close()
+                # Fresh visit, actual translations, persistence and keyboard dismissal.
+                localized=browser.new_context(viewport={"width":390,"height":900},reduced_motion='reduce')
+                lp=localized.new_page();lp.goto(origin+'/index.html',wait_until='networkidle')
+                assert lp.locator('.language-dialog').is_visible()
+                lp.screenshot(path=str(out/'language-mobile.png'))
+                lp.locator('[data-choose-language="fr"]').click()
+                assert lp.locator('html').get_attribute('lang')=='fr'
+                assert lp.locator('#experience-heading').inner_text()=="L'ingénierie sur le terrain."
+                assert '25 mesures DAX' in lp.locator('#experience-oddo').inner_text()
+                assert 'accord de confidentialité' in lp.locator('#project-greenops').inner_text()
+                for width in [1600,1280,1024,820,768,390,320]:
+                    lp.set_viewport_size({'width':width,'height':1000})
+                    assert not lp.evaluate('document.documentElement.scrollWidth>innerWidth'),('French overflow',width)
+                    if width in [1280,390]:lp.screenshot(path=str(out/f'french-{width}.png'))
+                lp.reload(wait_until='networkidle')
+                assert lp.locator('.language-dialog').is_hidden()
+                assert lp.locator('html').get_attribute('lang')=='fr'
+                lp.locator('.menu-toggle').click();lp.locator('.locale-toggle').click()
+                lp.locator('[data-choose-language="en"]').click()
+                assert lp.locator('html').get_attribute('lang')=='en'
+                lp.locator('.locale-toggle').click();lp.keyboard.press('Escape')
+                assert lp.locator('.language-dialog').is_hidden()
+                assert lp.locator('.locale-toggle').evaluate('e=>e===document.activeElement')
+                report['language']='first visit dialog, French content, seven responsive widths, saved preference, switching, Escape and focus passed'
+                localized.close()
             finally:browser.close()
     finally:server.shutdown();server.server_close()
-    reader=PdfReader(ROOT/"assets/cv/CV.pdf")
+    reader=PdfReader(ROOT/"assets/cv/CV-2.pdf")
     assert len(reader.pages)==1,"STRICT: PDF must be exactly one page"
     pg=reader.pages[0]
     assert abs(float(pg.mediabox.width)-595.28)<2 and abs(float(pg.mediabox.height)-841.89)<2,"Not A4"
     text=pg.extract_text();lower=text.casefold()
-    for term in ["Mohamed Sbissi","Seeking PFE 2027","ODDO BHF","Ooredoo","GreenOPS AI","2nd Place","2,000 TND","12 business domains","seven SQL","four-page","Angular","Python","Environment exposure","Apache Kafka","OpenShift","ESPRIT",data["personal"]["email"],"Languages","Certifications"]:
+    for term in ["Mohamed Sbissi","Seeking PFE 2027","ODDO BHF","Ooredoo","GreenOPS AI","2nd Place","2,000 TND","12 domains","7 SQL","4-page","25 DAX","10 authenticated","Angular","Python","Environment exposure","Apache Kafka","OpenShift","ESPRIT",data["personal"]["email"],"Languages","Certifications"]:
         assert term.casefold() in lower,term
     assert "sbissimohamed9@gmail.com" not in text
     assert "Technical Skills".casefold() in lower
@@ -128,7 +173,8 @@ def main():
     locations=[lower.index(x.casefold()) for x in headers];assert locations==sorted(locations)
     uris=[str(a.get_object().get("/A",{}).get("/URI","")) for a in pg.get("/Annots",[])]
     assert all(x in uris for x in [data["personal"]["portfolio"],data["personal"]["linkedin"],data["personal"]["github"],"mailto:"+data["personal"]["email"]])
-    xml=ET.fromstring(subprocess.run(["pdftotext","-bbox",str(ROOT/"assets/cv/CV.pdf"),"-"],capture_output=True,check=True).stdout)
+    poppler=shutil.which('pdftotext') or r'C:\Users\sbiss\AppData\Local\Programs\MiKTeX\miktex\bin\x64\pdftotext.exe'
+    xml=ET.fromstring(subprocess.run([poppler,"-bbox",str(ROOT/"assets/cv/CV-2.pdf"),"-"],capture_output=True,check=True).stdout)
     pages=[x for x in xml.iter() if x.tag.endswith("page")];assert len(pages)==1
     wordpage=pages[0];width,height=float(wordpage.attrib["width"]),float(wordpage.attrib["height"])
     words=[x for x in wordpage.iter() if x.tag.endswith("word")]
