@@ -20,3 +20,13 @@
 - Added progressive scroll reveals, subtle hover transitions and reading progress, with reduced-motion and no-JS support.
 - Updated the build and validation workflow to use CV-2 without overwriting the earlier PDF.
 - User-reported CV-2 score: 88. No independent new ATS score is claimed.
+
+## Contact, sharing and optional analytics
+
+- Generated an embedded-photo vCard with verified phone, email, name and portfolio link. Phone numbers now open the card; separate Call links preserve dialing.
+- Added native Web Share with an accessible copy-link fallback, in English and French.
+- Prepared a GitHub Pages-compatible Cloudflare Worker/D1 collector and authenticated private dashboard.
+- Added explicit allow/refuse choices, withdrawal and visit erasure, GPC/DNT handling, 30-day expiry, a payload allowlist and bounded requests.
+- Added active-time estimates and consented session timelines. No named recruiter identification, fingerprinting or contact-list access.
+- Static collection remains disabled until a real Worker endpoint is deployed and configured.
+- Checked vCard fields/photo, responsive controls, native/fallback sharing, consent/withdrawal, active/idle timing, dashboard authorization/logout, SQL deduplication, erasure and retention. Dashboard preview uses test fixtures only.

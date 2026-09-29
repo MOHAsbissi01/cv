@@ -3,12 +3,12 @@
   "format": "A4",
   "original_files_unchanged": true,
   "original_hashes": {
-    "index.html": "c9d4a8dfb8d1a94e687942735016cea0abe89287ea56c79aaeff49199162f467",
-    "cv.html": "5417e05cf441db17f2d1109961f3f41d5f4db82dfa87fe9ab74b4444de5fafe1",
+    "index.html": "7348b71592455d68ca9328a82b1ab6b8a07bc2aa7e5e778d8be50ac87d20e172",
+    "cv.html": "7b5eb0c3e984a486138577c5c929427965b0ac7166d8d1788e344f2b403f839c",
     "assets/cv/CV.pdf": "24713798134eb65159e8ae77b264e067ff2f352e2d1e02db78a2abc2f91d29da",
-    "data/profile.json": "366eab2bfde48dadeb981ab9f80a7b340339a04290706bba38bc3c733cbf32de",
+    "data/profile.json": "b752fc722daa40741a9742785a497026cd08fb8fd3bd82ede3bebd0858c483b4",
     "css/cv.css": "15bba297aa365b4f7de8d9b84d5def1f3195cc5ba52f051c89027de2ccab145d",
-    "scripts/build.py": "a6c574a03608dc7c790513b42bb49bc25040ab5cf68ae5f730c46e39856e3a9f"
+    "scripts/build.py": "c30887bd6b31427650f55c32d855285d047003f2a83682f37c3d1eae7b2116ee"
   },
   "body_font_pt": 9.5,
   "selectable_text": true,

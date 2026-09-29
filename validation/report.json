@@ -3,7 +3,12 @@
   "email": "sbissi.mohamed@esprit.tn",
   "browser": [
     {
-      "width": 1600,
+      "width": 1920,
+      "overflow": false,
+      "menu": "desktop"
+    },
+    {
+      "width": 1440,
       "overflow": false,
       "menu": "desktop"
     },
@@ -23,6 +28,11 @@
       "menu": "passed"
     },
     {
+      "width": 430,
+      "overflow": false,
+      "menu": "passed"
+    },
+    {
       "width": 390,
       "overflow": false,
       "menu": "passed"
@@ -37,7 +47,7 @@
   "motion": "scroll reveal and live reduced-motion preference passed",
   "javascript_errors": [],
   "http_errors": [],
-  "language": "first visit dialog, French content, seven responsive widths, saved preference, switching, Escape and focus passed",
+  "language": "immediate English first view, French content, seven responsive widths, saved preference, switching, Escape and focus passed",
   "pdf": {
     "pages": 1,
     "format": "A4",
@@ -58,6 +68,6 @@
     ]
   },
   "main_stack_vs_environment": "passed",
-  "downloads_and_filters": "passed",
+  "download_and_projects": "passed",
   "public_placeholders": "none"
 }

@@ -1,0 +1,11 @@
+{
+  "name": "mohamed-sbissi-portfolio-analytics",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-09-27",
+  "workers_dev": true,
+  "assets": {"directory":"./public","binding":"ASSETS","run_worker_first":true},
+  "vars": {"PORTFOLIO_ORIGIN":"https://mohasbissi01.github.io"},
+  "triggers": {"crons":["0 3 * * *"]},
+  "observability": {"enabled":false},
+  "d1_databases": [{"binding":"DB","database_name":"portfolio-analytics","database_id":"00000000-0000-0000-0000-000000000000"}]
+}

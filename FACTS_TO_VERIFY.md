@@ -9,7 +9,7 @@
 - EduTechHub: restore or correct repository access and confirm personal modules. Link is withheld while it returns 404.
 - Certifications: verify issuer, completion dates, and credential links; 'Combine Data from Multiple SQL Tables' is retained for review only.
 - Insight For Impact: confirm event, date, achievement, and whether it is related to GreenOPS AI.
-- Language levels are self-reported. Add a phone number only if desired and confirmed.
+- Language levels are self-reported. Website phone number confirmed by the user: +216 29 78 50 51.
 - Portfolio URL returned HTTP 200 on 26 September 2026. This local upgrade has not been published; deploy the built files to update the QR destination content.
 - LinkedIn blocks automated verification with HTTP 999; URL matches the supplied profile PDF.
 - ODDO additional tools: confirm which were directly used versus observed, and the depth of Kafka, Node.js, WebSockets, Spring Batch, Camunda, OpenShift, Helm, Nginx, Keycloak, ELK and bot interaction. All are presented as environment/exposure until clarified.

@@ -6,11 +6,13 @@
     "objective": "Seeking PFE 2027",
     "location": "Tunis, Tunisia",
     "email": "sbissi.mohamed@esprit.tn",
+    "phone": "+216 29 78 50 51",
+    "phone_uri": "tel:+21629785051",
     "linkedin": "https://www.linkedin.com/in/mohamed-sbissi",
     "github": "https://github.com/MOHAsbissi01",
     "portfolio": "https://mohasbissi01.github.io/cv/",
     "portfolio_verified_on": "2026-09-26",
-    "summary": "I'm a final-year Computer Engineering student at ESPRIT, specializing in ERP and Business Intelligence. At ODDO BHF, I connected HR data preparation, PostgreSQL reporting and Power BI analytics with tested application and ML integration. My focus: turning complex business needs into dependable data and useful insights. Now seeking a PFE internship in 2027, while deepening my knowledge of SAP BW, ABAP/Fiori, AWS and MLOps.",
+    "summary": "I'm a final-year Computer Engineering student at ESPRIT specializing in ERP and Business Intelligence. My recent work combines data preparation, PostgreSQL reporting, Power BI and enterprise application integration. I'm currently studying SAP BW and ABAP/Fiori to connect technical work with business decisions.",
     "cv_summary": "Final-year ERP/BI engineering student at ESPRIT seeking PFE 2027. Built PostgreSQL reporting, Power BI analytics and tested API/ML integration for HR decisions. Currently studying SAP BW and ABAP/Fiori."
   },
   "experience": [
@@ -527,7 +529,7 @@
     "EduTechHub: restore or correct repository access and confirm personal modules. Link is withheld while it returns 404.",
     "Certifications: verify issuer, completion dates, and credential links; 'Combine Data from Multiple SQL Tables' is retained for review only.",
     "Insight For Impact: confirm event, date, achievement, and whether it is related to GreenOPS AI.",
-    "Language levels are self-reported. Add a phone number only if desired and confirmed.",
+    "Language levels are self-reported. Website phone number confirmed by the user: +216 29 78 50 51.",
     "Portfolio URL returned HTTP 200 on 26 September 2026. This local upgrade has not been published; deploy the built files to update the QR destination content.",
     "LinkedIn blocks automated verification with HTTP 999; URL matches the supplied profile PDF.",
     "ODDO additional tools: confirm which were directly used versus observed, and the depth of Kafka, Node.js, WebSockets, Spring Batch, Camunda, OpenShift, Helm, Nginx, Keycloak, ELK and bot interaction. All are presented as environment/exposure until clarified."

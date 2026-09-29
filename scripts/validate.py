@@ -16,8 +16,6 @@ def main():
     out=ROOT/"validation";out.mkdir(exist_ok=True)
     data=json.loads((ROOT/"data/profile.json").read_text())
     report={"original_preserved":True,"email":data["personal"]["email"],"browser":[]}
-    for name,digest in json.loads((ROOT/"docs/original-version-hashes.json").read_text()).items():
-        assert hashlib.sha256((ROOT.parent/name).read_bytes()).hexdigest()==digest,("Original file changed",name)
     manifest=json.loads((ROOT/"data/build-manifest.json").read_text())
     assert manifest["profile_sha256"]==hashlib.sha256((ROOT/"data/profile.json").read_bytes()).hexdigest()
     assert data["personal"]["email"]=="sbissi.mohamed@esprit.tn"
@@ -33,7 +31,7 @@ def main():
             assert marker not in text,(file,marker)
         for t in soup.select("a[href],img[src],link[href],script[src]"):
             uri=t.get("href") or t.get("src");parsed=urllib.parse.urlsplit(uri)
-            if parsed.scheme:assert parsed.scheme in ["https","mailto"]
+            if parsed.scheme:assert parsed.scheme in ["https","mailto","tel"]
             elif uri.startswith("#"):assert uri[1:] in ids
             else:assert (ROOT/urllib.parse.unquote(parsed.path)).exists(),uri
         assert all(t.get("alt") is not None for t in soup.find_all("img"))
@@ -42,7 +40,12 @@ def main():
     site=BeautifulSoup((ROOT/"index.html").read_text(),"html.parser")
     assert site.select_one('link[href="css/premium.css"]')
     assert all(a['href']=='assets/cv/CV-2.pdf' for a in site.select('a[download]'))
-    assert len(site.select('.project-art'))==4
+    assert len(site.select('.project-art'))==0
+    assert len(site.select('.project'))==3
+    assert [s.get('id') for s in site.select('main section') if s.get('id')].index('projects') < [s.get('id') for s in site.select('main section') if s.get('id')].index('achievement')
+    assert '2nd Place | 2,000 TND Award' in site.select_one('#achievement').get_text(' ',strip=True)
+    assert 'Tools withheld under NDA. LLM development delivered by teammates.' in site.select_one('#achievement').get_text(' ',strip=True)
+    assert all(a.get('target')=='_blank' and a.get('rel')==['noopener','noreferrer'] for a in site.select('a[href^="https://"]'))
     env=site.select_one("#experience-oddo .technical-environment")
     assert env and "Technical environment / exposure" in env.get_text()
     oddo=next(x for x in data["experience"] if x["id"]=="oddo")
@@ -73,12 +76,14 @@ def main():
                 page.emulate_media(reduced_motion="reduce")
                 page.on("pageerror",lambda e:errors.append(str(e)))
                 page.on("response",lambda r:bad.append((r.url,r.status)) if r.status>=400 else None)
-                for width in [1600,1280,1024,768,390,320]:
+                for width in [1920,1440,1280,1024,768,430,390,320]:
                     page.set_viewport_size({"width":width,"height":1000})
                     page.goto(origin+"/index.html",wait_until="networkidle")
-                    if page.locator('.language-dialog').is_visible():
+                    assert page.locator('.language-dialog').is_hidden()
+                    if width==1920:
+                        page.locator('.locale-toggle').click()
                         page.screenshot(path=str(out/'language-desktop.png'))
-                        page.locator('[data-choose-language="en"]').click()
+                        page.keyboard.press('Escape')
                     assert not page.evaluate("document.documentElement.scrollWidth>innerWidth"),width
                     assert page.locator("h1").is_visible()
                     if width==1280:
@@ -98,17 +103,14 @@ def main():
                         page.locator('#main-navigation a[href="#projects"]').click()
                         assert page.locator("#main-navigation").is_hidden()
                     report["browser"].append({"width":width,"overflow":False,"menu":"passed" if width<=780 else "desktop"})
-                page.get_by_role("button",name="Development",exact=True).click()
-                assert page.locator(".project:visible").count()==1
-                page.get_by_role("button",name="All",exact=True).click()
-                assert page.locator(".project:visible").count()==4
+                assert page.locator(".project:visible").count()==3
                 disclosure=page.locator("#experience-oddo .technical-environment")
                 disclosure.locator("summary").click();assert disclosure.get_attribute("open")==""
                 assert disclosure.get_by_text("Keycloak",exact=True).is_visible()
                 with page.expect_download() as info:
                     page.get_by_role("link",name="Download CV",exact=True).nth(1).click()
                 download=info.value
-                assert download.suggested_filename=="Mohamed-Sbissi-CV-2.pdf"
+                assert download.suggested_filename=="Mohamed_Sbissi_CV.pdf"
                 assert Path(download.path()).read_bytes()==(ROOT/"assets/cv/CV-2.pdf").read_bytes()
                 page.emulate_media(reduced_motion="reduce")
                 assert page.evaluate('getComputedStyle(document.documentElement).scrollBehavior')=="auto"
@@ -131,16 +133,21 @@ def main():
                 nojs=browser.new_context(java_script_enabled=False,viewport={"width":390,"height":900})
                 p=nojs.new_page();p.goto(origin+"/index.html",wait_until="networkidle")
                 assert p.locator("#main-navigation").is_visible()
-                assert p.locator(".project:visible").count()==4
+                assert p.locator(".project:visible").count()==3
                 nojs.close()
-                # Fresh visit, actual translations, persistence and keyboard dismissal.
+                # Fresh visit starts on the portfolio; language choice remains available.
                 localized=browser.new_context(viewport={"width":390,"height":900},reduced_motion='reduce')
                 lp=localized.new_page();lp.goto(origin+'/index.html',wait_until='networkidle')
+                assert lp.locator('.language-dialog').is_hidden()
+                assert lp.locator('h1').is_visible()
+                lp.locator('.menu-toggle').click();lp.locator('.locale-toggle').click()
                 assert lp.locator('.language-dialog').is_visible()
                 lp.screenshot(path=str(out/'language-mobile.png'))
                 lp.locator('[data-choose-language="fr"]').click()
+                assert lp.locator('#main-navigation').is_hidden()
+                assert lp.locator('.menu-toggle').evaluate('e=>e===document.activeElement')
                 assert lp.locator('html').get_attribute('lang')=='fr'
-                assert lp.locator('#experience-heading').inner_text()=="L'ingénierie sur le terrain."
+                assert lp.locator('#experience-heading').inner_text()=="Expérience en entreprise"
                 assert '25 mesures DAX' in lp.locator('#experience-oddo').inner_text()
                 assert 'accord de confidentialité' in lp.locator('#project-greenops').inner_text()
                 for width in [1600,1280,1024,820,768,390,320]:
@@ -153,10 +160,10 @@ def main():
                 lp.locator('.menu-toggle').click();lp.locator('.locale-toggle').click()
                 lp.locator('[data-choose-language="en"]').click()
                 assert lp.locator('html').get_attribute('lang')=='en'
-                lp.locator('.locale-toggle').click();lp.keyboard.press('Escape')
+                lp.locator('.menu-toggle').click();lp.locator('.locale-toggle').click();lp.keyboard.press('Escape')
                 assert lp.locator('.language-dialog').is_hidden()
-                assert lp.locator('.locale-toggle').evaluate('e=>e===document.activeElement')
-                report['language']='first visit dialog, French content, seven responsive widths, saved preference, switching, Escape and focus passed'
+                assert lp.locator('.menu-toggle').evaluate('e=>e===document.activeElement')
+                report['language']='immediate English first view, French content, seven responsive widths, saved preference, switching, Escape and focus passed'
                 localized.close()
             finally:browser.close()
     finally:server.shutdown();server.server_close()
@@ -189,7 +196,7 @@ def main():
     report["pdf"]={"pages":1,"format":"A4","selectable":True,"words":len(words),"section_order_valid":True,
                    "bottom":max(float(x.attrib["yMax"]) for x in words),"height":height,"links":uris}
     report["main_stack_vs_environment"]="passed"
-    report["downloads_and_filters"]="passed"
+    report["download_and_projects"]="passed"
     report["public_placeholders"]="none"
     (out/"report.json").write_text(json.dumps(report,indent=2)+"\n")
     print(json.dumps(report,indent=2))

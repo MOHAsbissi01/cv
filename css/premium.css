@@ -7,3 +7,52 @@ body{background:var(--paper);font-size:15px;-webkit-font-smoothing:antialiased}:
 @media(max-width:380px){.wrap{width:calc(100% - 28px)}.hero h1{font-size:59px}.hero-visual{padding:0 4px}.signal-panel{padding:14px}.signal-flow{gap:5px;font-size:10px}.signal-flow i{width:22px;height:22px}.hero .eyebrow{font-size:8px}.quick-facts div{padding:17px 14px}.quick-facts small{font-size:7px}.hero .button{padding:11px 10px}.brand-name{font-size:12px}.domain-tags span{font-size:8px}.section-heading h2{font-size:28px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.motion-ready .reveal:not(.is-visible){opacity:1;transform:none}*,*::before,*::after{animation:none!important;transition:none!important;translate:none!important;transform:none!important}.reading-progress{display:none}}
 @media print{.reading-progress,.project-art,.signal-panel,.explore-link,.experience-signature,.back-top{display:none!important}.hero-zone{color:#172d35;padding:0}.hero-zone::before,.hero-zone::after{display:none}.hero h1 span,.hero-role,.hero-focus,.hero-intro,.hero-meta,.hero-meta a{color:#172d35}.hero h1{font-size:27pt}.quick-facts{display:block;border:0}.quick-facts strong,.quick-facts span,.quick-facts small{color:#172d35}.project.featured{display:block}.motion-ready .reveal:not(.is-visible){opacity:1;transform:none}.featured-project .contribution,.featured-project .context,.award-prize,.featured-project .date{color:#172d35}}
+
+/* Recruiter-first refinements: compact evidence, concise projects and a balanced award. */
+.hero{padding:40px 0 32px;gap:48px}
+.hero h1{font-size:clamp(58px,5.9vw,78px);margin:16px 0}
+.availability{margin-bottom:14px}
+.hero-intro{font-size:15px;line-height:1.55;max-width:560px;margin-bottom:18px}
+.hero-meta{margin-top:15px}
+.visual-frame{transform:none;box-shadow:0 14px 36px #0002}
+.visual-frame:hover{transform:none}
+.quick-facts{grid-template-columns:repeat(3,1fr)}
+.quick-facts div{padding:18px 24px}
+.quick-facts strong{font-size:18px;letter-spacing:-.025em;font-weight:650}
+.quick-facts span{margin-top:4px}
+.quick-facts small{font:11px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;color:#b3c7bd}
+.section{padding:64px 0}
+.project.featured{display:block;padding:28px}
+.project .contribution{font-size:13px}
+.featured-achievement{display:block;background:#193631}
+.award-panel{display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:18px;padding:20px 30px;background:#244137;border-bottom:1px solid #ffffff24}
+.award-panel .eyebrow{margin:0;color:#e1c690}
+.award-result{display:flex;gap:8px;align-items:baseline;margin:0;color:#eff5ef;font-size:19px;line-height:1.3}
+.award-result strong,.award-result span{font-size:inherit;font-weight:600}
+.featured-project{padding:28px 30px}
+.featured-project h3{font-size:25px}
+.featured-project .role{color:#d7e7da}
+.award-note{font-size:12px;color:#c3d6cb;margin:10px 0 0}
+.skill-group .stack{margin-top:17px}
+@media(max-width:780px){
+  .hero{padding:28px 0 25px;gap:0}
+  .hero h1{font-size:clamp(54px,11vw,70px);margin:15px 0}
+  .hero-visual{display:none}
+  .hero-zone{padding-bottom:20px}
+  .quick-facts{grid-template-columns:1fr;gap:0}
+  .quick-facts div{padding:12px 18px;border-right:0;border-bottom:1px solid #ffffff18}
+  .quick-facts div:last-child{border-bottom:0}
+  .quick-facts strong{font-size:16px}
+  .quick-facts span{font-size:12px}
+  .quick-facts small{font-size:11px}
+  .section{padding:44px 0}
+  .hero .eyebrow,.label{font-size:10px}
+  .chip{font-size:11px}
+  .project-links a{font-size:12px}
+  .award-panel{display:block;padding:22px 24px}
+  .award-result{font-size:17px;margin-top:8px}
+  .featured-project{padding:24px}
+  .featured-project h3{font-size:23px}
+}
+@media(max-width:380px){.hero h1{font-size:52px}.award-result{flex-wrap:wrap}}
+@media print{.hero-visual{display:none}.quick-facts div{padding:5px 0}.award-panel,.featured-project{background:white;color:#172d35}.award-result,.award-note,.featured-project .role{color:#172d35}}

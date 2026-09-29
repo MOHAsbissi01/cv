@@ -1,0 +1,8 @@
+{
+  "vcard": "prefilled fields, CRLF folding and embedded JPEG verified",
+  "share": "native API and keyboard-accessible fallback verified",
+  "consent": "no upload before opt-in or after refusal; erasure and GPC verified",
+  "time": "active clock and idle cap verified",
+  "dashboard": "authenticated request, rendering and logout verified",
+  "javascript_errors": []
+}

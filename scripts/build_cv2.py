@@ -24,8 +24,10 @@ def main():
     data["cv"]["skills"]=variant["skills"]
     soup=BeautifulSoup(build.cv(data),"html.parser")
     soup.title.string=data["personal"]["name"]+" - CV-2 - PFE 2027"
+    for a in soup.select('a[href^="https://"]'):
+        a["target"]="_blank";a["rel"]="noopener noreferrer"
     for a in soup.select('a[href="assets/cv/CV.pdf"]'):
-        a["href"]="assets/cv/CV-2.pdf";a["download"]="CV-2.pdf"
+        a["href"]="assets/cv/CV-2.pdf";a["download"]="Mohamed_Sbissi_CV.pdf"
     business=next(x for x in data["projects"] if x["id"]=="business")
     app=next(x for x in data["projects"] if x["id"]=="superstore")
     article='<article class="entry"><div class="entry-heading"><h3>Business Performance Prediction / ML Superstore</h3><span class="date">'+build.E(business["date"])+'</span></div><ul>'+''.join('<li>'+build.E(x)+'</li>' for x in variant["projects"]["business"])+'</ul><p class="tech">'+build.external(business["links"][0]["url"],"Analysis repository")+' / '+build.external(app["links"][0]["url"],"Application repository")+'</p></article>'

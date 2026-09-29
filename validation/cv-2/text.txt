@@ -21,8 +21,8 @@ Developed Spring Boot/Angular B2B components and Power BI dashboards for contrac
 Integrated REST sources and ETL pipelines to consolidate telecom data; translated business needs into technical
 specifications.
 AWARDS / COMPETITIONS
-GreenOPS AI - 2nd Place - 2,000 TND prize
-Data Engineer | AI competition | Pharmaceutical sustainability
+GreenOPS AI — 2nd Place | 2,000 TND Award
+Data Engineer | AI Competition | Pharmaceutical Sustainability
 Collected and integrated multi-source data into a preparation pipeline for AI training.
 Prepared training-ready datasets aligned with pharmaceutical business needs; contributed data/prediction integration.
 Tools withheld under NDA. LLM development delivered by teammates.

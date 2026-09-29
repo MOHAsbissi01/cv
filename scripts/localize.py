@@ -19,8 +19,8 @@ def localize(soup):
         else:
             span=soup.new_tag('span',attrs={'data-i18n':key});span.string=text
             node.replace_with(span)
-    for element in soup.select('[aria-label],img[alt]'):
-        for attr in ['aria-label','alt']:
+    for element in soup.select('[aria-label],img[alt],[title]'):
+        for attr in ['aria-label','alt','title']:
             text=element.get(attr)
             if text in translations:
                 key='t'+str(len(strings));strings[key]={'en':text,'fr':translations[text]}

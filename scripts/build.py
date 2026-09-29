@@ -13,7 +13,8 @@ def fragment(markup):
 
 def external(url,label,cls=""):
     if not url.startswith(("https://","mailto:")): raise ValueError("Invalid URL")
-    return f'<a class="{cls}" href="{E(url,quote=True)}">{E(label)}</a>'
+    window=' target="_blank" rel="noopener noreferrer"' if url.startswith("https://") else ""
+    return f'<a class="{cls}" href="{E(url,quote=True)}"{window}>{E(label)}</a>'
 
 def page_head(d,title,css):
     p=d["personal"]
@@ -30,8 +31,16 @@ def portfolio(d):
     soup=BeautifulSoup(render_previous_structure(d),"html.parser")
     # Reuse the existing semantic structure and factual content, then upgrade presentation.
     soup.head.clear()
-    head=BeautifulSoup(page_head(d,p["name"]+" | Data Engineering - BI - SAP",["css/style.css","css/responsive.css","css/print.css"]),"html.parser")
+    head=BeautifulSoup(page_head(d,p["name"]+" | Data Engineering · BI · SAP | PFE 2027",["css/style.css","css/responsive.css","css/print.css"]),"html.parser")
     soup.head.replace_with(head.head)
+    description="Final-year Computer Engineering student at ESPRIT specializing in ERP/BI, with experience in Data Engineering, Power BI, SQL and enterprise application development. Seeking PFE 2027."
+    soup.select_one('meta[name="description"]')["content"]=description
+    soup.select_one('meta[property="og:title"]')["content"]="Mohamed Sbissi | Data Engineering · BI · SAP"
+    soup.select_one('meta[property="og:description"]')["content"]="Final-year ERP/BI engineering student at ESPRIT seeking PFE 2027, with experience across enterprise data, BI and software projects."
+    person=json.loads(soup.select_one('script[type="application/ld+json"]').string)
+    person["jobTitle"]="Final-Year Computer Engineering Student"
+    person["alumniOf"]={"@type":"CollegeOrUniversity","name":"ESPRIT"}
+    soup.select_one('script[type="application/ld+json"]').string=json.dumps(person).replace("</","<\\/")
     for script in soup.select("script[src]"):script.decompose()
     soup.body.append(fragment('<script src="js/main.js" defer></script>').script)
     brand=soup.select_one(".brand")
@@ -39,14 +48,16 @@ def portfolio(d):
     brand.append(fragment(f'<span class="brand-mark" aria-hidden="true">MS</span><span class="brand-name">{E(p["name"])}<span class="brand-subtitle">Data / BI / SAP</span></span>'))
     nav=soup.select_one("nav");nav["id"]="main-navigation"
     nav.clear()
-    for id,label in [("experience","Experience"),("projects","Projects"),("skills","Skills"),("education","Education")]:
+    for id,label in [("about","About"),("experience","Experience"),("projects","Projects"),("skills","Skills"),("contact","Contact")]:
         nav.append(fragment(f'<a href="#{id}">{label}</a>'))
     nav.append(fragment('<a class="nav-download" href="assets/cv/CV.pdf" download="Mohamed-Sbissi-CV.pdf">Download CV</a>'))
     nav.insert_before(fragment('<button class="menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false">Menu</button>'))
     name=soup.select_one("h1");first,last=p["name"].split(" ",1);name.clear();name.append(first+" ");name.append(fragment("<span>"+E(last)+"</span>"))
-    intro=soup.select_one(".hero-intro");intro.string="Turning data into reliable pipelines, decision-ready insights and enterprise solutions."
-    domains=fragment('<div class="domain-tags" aria-label="Core domains"><span>Data Engineering</span><span>Business Intelligence</span><span>SAP / ERP</span><span>AI / ML</span></div>')
-    soup.select_one(".hero-focus").insert_after(domains)
+    intro=soup.select_one(".hero-intro");intro.string="ERP/BI engineering student at ESPRIT with enterprise experience in data pipelines, SQL analytics, Power BI and application integration, seeking PFE 2027."
+    actions=soup.select_one(".hero .actions")
+    work=actions.select_one('a[href="#projects"]');work.extract();work.string="View My Work";work["class"]=["button"]
+    actions.insert(0,work)
+    actions.select_one('a[download]')["class"]=["button","secondary"]
     portrait=soup.select_one(".portrait")
     visual=fragment(f'<aside class="hero-visual" aria-label="Profile and internship evidence"><div class="visual-frame"><div class="frame-top"><span>Computer Engineering / ESPRIT</span><span aria-hidden="true"></span></div><img class="portrait" src="assets/images/portrait.jpg" width="340" height="330" alt="Portrait of {E(p["name"])}"><div class="frame-caption"><strong>Engineering with data.</strong><span>Tunis, Tunisia</span></div></div><div class="visual-note"><div><strong>7 SQL views</strong><small>ODDO BHF reporting</small></div><div><strong>4 BI pages</strong><small>Training analytics</small></div></div></aside>')
     portrait.replace_with(visual)
@@ -76,18 +87,14 @@ def portfolio(d):
                 env+='<div class="environment-category"><h4>'+E(category["category"])+'</h4><div class="stack">'+''.join('<span class="chip">'+E(t)+'</span>' for t in category["items"])+'</div></div>'
             env+='</div></details>'
             body.append(fragment(env))
-    green=soup.select_one("#project-greenops")
-    green.extract();green["class"]=["featured-project"];green.attrs.pop("data-category",None)
-    for node in green.select(".award-tag"):node.decompose()
-    for label in green.select(".label"):
-        if label.get_text()=="Team":label.decompose()
-    for node in green.select(".compact"):node.decompose()
-    achievement=fragment('<section class="section" id="achievement" aria-labelledby="achievement-heading"><div class="section-heading"><h2 id="achievement-heading">Data engineering. Competition impact.</h2><p>A team achievement, with a clearly defined individual role.</p></div><div class="featured-achievement"><aside class="award-panel"><p class="eyebrow">GreenOPS AI / Team award</p><div class="award-rank">2<small>nd</small></div><p class="award-prize">2,000 TND prize</p><p class="award-caption">AI competition / Pharmaceutical sustainability</p></aside></div></section>')
-    achievement.select_one(".featured-achievement").append(green)
-    soup.select_one("#projects").insert_before(achievement)
-    for btn in list(soup.select("[data-filter]")):
-        if btn["data-filter"]=="Competition":btn.decompose()
-    soup.select_one("#filter-status").string="4 projects shown"
+    soup.select_one("#experience-ooredoo").insert_after(soup.select_one("#experience-recordati").extract())
+    soup.select_one("#project-greenops").decompose()
+    green=next(x for x in d["projects"] if x["id"]=="greenops")
+    bullets="".join(f'<li>{E(item)}</li>' for item in green["cv_contributions"])
+    achievement=fragment(f'<section class="section" id="achievement" aria-labelledby="achievement-heading"><div class="section-heading"><h2 id="achievement-heading">Award / Competition</h2><p>Team result, with my data engineering contribution clearly attributed.</p></div><div class="featured-achievement"><div class="award-panel"><p class="eyebrow">GreenOPS AI · Team award</p><p class="award-result"><strong>2nd Place</strong><span>| 2,000 TND Award</span></p></div><article class="featured-project" id="project-greenops"><h3>GreenOPS AI</h3><p class="role">{E(green["role"])} | AI Competition | Pharmaceutical Sustainability</p><ul class="contribution">{bullets}</ul><p class="award-note">Tools withheld under NDA. LLM development delivered by teammates.</p></article></div></section>')
+    soup.select_one("#projects").insert_after(achievement)
+    soup.select_one(".filter-bar").decompose()
+    soup.select_one("#filter-status").decompose()
     for x in soup.select(".project"):
         for node in list(x.select(".date")):
             if "unavailable" in node.get_text().lower():node.decompose()
@@ -96,6 +103,18 @@ def portfolio(d):
                 if label.get_text()=="My contribution":label.decompose()
         for a in x.select(".project-links a"):
             a.string="View Repository \u2192" if a.get_text()=="GitHub" else "Contribution evidence \u2192"
+    for label in soup.select("#project-urban .label"):
+        if label.get_text(strip=True)=="Project stack (team scope)":
+            label.find_next_sibling("div",class_="stack").decompose()
+            label.decompose()
+    soup.select_one("#project-edutech").decompose()
+    skills=soup.select_one(".skills");skills.clear()
+    for group in d["cv"]["skills"]:
+        chips="".join(f'<span class="chip">{E(item)}</span>' for item in group["items"])
+        skills.append(fragment(f'<article class="skill-group"><h3>{E(group["category"])}</h3><div class="stack">{chips}</div></article>'))
+    for item in list(soup.select("#education .education-item"))[1:]:item.decompose()
+    certifications=soup.select_one("#certifications .contribution");certifications.clear()
+    for index in d["cv"]["certification_indexes"]:certifications.append(fragment(f'<li>{E(d["certifications"][index])}</li>'))
     # Keep confirmed competition participation; do not expose incomplete award metadata.
     for item in list(soup.select("#awards .education-item")):
         if item.h3.get_text()!="IEEEXtreme 17.0":item.decompose()
@@ -110,7 +129,9 @@ def portfolio(d):
         if a.get("href") in [p["linkedin"],p["github"]]:a["class"]=["button","social"]
     footer=soup.select_one("footer")
     footer.clear();footer.append(fragment(f'<div class="footer-inner"><span>{E(p["name"])} &middot; {E(p["objective"])}</span><div><a href="cv.html">Printable CV</a>{external(p["github"],"GitHub")}{external(p["linkedin"],"LinkedIn")}</div></div>'))
-    soup=polish(soup)
+    soup=polish(soup,d)
+    for a in soup.select('a[href^="https://"]'):
+        a["target"]="_blank";a["rel"]="noopener noreferrer"
     result=str(soup)
     for placeholder in ["TODO","REVIEW:","Date to confirm","requires confirmation"]:
         if placeholder in soup.body.get_text():raise RuntimeError("Public placeholder leaked: "+placeholder)
@@ -131,7 +152,7 @@ def cv(d):
         b+='</article>'
     b+='</section><section><h2>Awards / Competitions</h2>'
     green=project("greenops")
-    b+=f'<article class="entry"><h3 class="award-title">GreenOPS AI - {E(green["achievement"])}</h3><p class="role">{E(green["role"])} | AI competition | Pharmaceutical sustainability</p>'+contribution(green["cv_contributions"])+'<p class="tech">Tools withheld under NDA. LLM development delivered by teammates.</p></article></section>'
+    b+=f'<article class="entry"><h3 class="award-title">GreenOPS AI — 2nd Place | 2,000 TND Award</h3><p class="role">{E(green["role"])} | AI Competition | Pharmaceutical Sustainability</p>'+contribution(green["cv_contributions"])+'<p class="tech">Tools withheld under NDA. LLM development delivered by teammates.</p></article></section>'
     b+='<section><h2>Selected Projects</h2>'
     urban=project("urban")
     b+=f'<article class="entry"><div class="entry-heading"><h3>Intelligent Urban Mobility | Data / ML team contributor</h3><span class="date">{E(urban["date"])}</span></div>'+contribution(urban["cv_contributions"])+'<p class="tech">Tech: Python, scikit-learn, FastAPI, n8n &middot; '+external(urban["links"][0]["url"],"GitHub / project evidence")+'</p></article>'
@@ -149,6 +170,8 @@ def cv(d):
 def main():
     parser=argparse.ArgumentParser();parser.add_argument("--pdf",action="store_true");args=parser.parse_args()
     d=json.loads((ROOT/"data/profile.json").read_text(encoding="utf-8"))
+    from contact_card import generate
+    generate(d)
     import qrcode
     from qrcode.image.svg import SvgPathImage
     q=qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_M,box_size=8,border=4);q.add_data(d["personal"]["portfolio"]);q.make(fit=True)
