@@ -43,7 +43,7 @@
   "description": "Final-year Computer Engineering student (ERP / Business Intelligence) seeking a PFE 2027 internship in Data Engineering, Business Intelligence and SAP.",
   "address": { "@type": "PostalAddress", "addressLocality": "Tunis", "addressCountry": "TN" },
   "alumniOf": { "@type": "CollegeOrUniversity", "name": "ESPRIT" },
-  "knowsAbout": ["Data Engineering", "Business Intelligence", "SQL", "PostgreSQL", "ETL", "Power BI", "DAX", "Python", "Machine Learning"],
+  "knowsAbout": ["Data Engineering", "Business Intelligence", "SQL", "PostgreSQL", "ETL", "Power BI", "DAX", "Python", "Machine Learning", "Deep Learning", "Natural Language Processing"],
   "knowsLanguage": ["ar", "fr", "en", "es"],
   "sameAs": ["https://www.linkedin.com/in/mohamed-sbissi", "https://github.com/MOHAsbissi01"]
 }
@@ -243,11 +243,15 @@
   <!-- PROJECTS -->
   <section class="section" id="projects" aria-labelledby="proj-title">
     <div class="wrap">
-      <div class="head reveal"><p class="eyebrow">04 / Projects</p><h2 id="proj-title">Selected projects</h2></div>
+      <div class="head reveal">
+        <p class="eyebrow">04 / Projects</p>
+        <h2 id="proj-title">Academic projects</h2>
+        <p class="sub">Coursework and team projects from my engineering studies at ESPRIT. None of these is internship work: my professional experience is in the <a href="#experience">Experience</a> section above.</p>
+      </div>
       <div class="projects">
         <article class="project card reveal">
           <header>
-            <p class="when">Feb &ndash; May 2026 &middot; ESPRIT team project</p>
+            <p class="when"><span class="tag">Academic project</span> Feb &ndash; May 2026 &middot; Team project</p>
             <h3>Intelligent Urban Mobility</h3>
           </header>
           <dl class="story">
@@ -265,7 +269,7 @@
 
         <article class="project card reveal">
           <header>
-            <p class="when">Nov &ndash; Dec 2025 &middot; Academic project</p>
+            <p class="when"><span class="tag">Academic project</span> Nov &ndash; Dec 2025</p>
             <h3>Business Performance Prediction</h3>
             <p class="muted">ML Superstore</p>
           </header>
@@ -279,6 +283,86 @@
           <p class="links">
             <a href="https://github.com/MOHAsbissi01/Business-Performance-Prediction-ML" target="_blank" rel="noopener noreferrer">Analysis repository<span class="sr-only"> (opens in a new tab)</span> &rarr;</a>
             <a href="https://github.com/MOHAsbissi01/streamlit-ml-superstore" target="_blank" rel="noopener noreferrer">Streamlit app repository<span class="sr-only"> (opens in a new tab)</span> &rarr;</a>
+          </p>
+        </article>
+
+        <article class="project card reveal" id="project-road">
+          <header>
+            <p class="when"><span class="tag">Academic project</span> Deep learning course</p>
+            <h3>Road Anomaly Detection</h3>
+            <p class="muted">Pixel-level obstacle detection</p>
+          </header>
+          <!-- TODO(owner): add the project dates; the repo README does not state them. -->
+          <dl class="story">
+            <div><dt>Problem</dt><dd>Detect unexpected obstacles on the road (animals, rocks, cones, lost cargo) at pixel level on the RoadAnomaly dataset: 60 images with semantic masks. Inspired by Lis et al., ICCV 2019.</dd></div>
+            <div><dt>Approach</dt><dd>Compared three models: a baseline encoder-decoder CNN trained from scratch, a U-Net with an ImageNet-pretrained MobileNetV2 encoder (transfer learning), and a convolutional autoencoder that uses reconstruction error as the anomaly score. Split by scene group (70/15/15, seed 42) to avoid near-duplicate leakage, evaluated at native 1280&times;720, thresholds chosen on validation data.</dd></div>
+            <div>
+              <dt>Results</dt>
+              <dd>
+                <div class="mini-wrap">
+                  <table class="mini">
+                    <caption>Test set, 12 images. Scale 0 to 1.</caption>
+                    <thead><tr><th scope="col">Model</th><th scope="col">F1</th><th scope="col">IoU</th></tr></thead>
+                    <tbody>
+                      <tr><th scope="row">Baseline CNN</th><td><span class="v">0.464</span><span class="meter" style="--v:46.4" aria-hidden="true"></span></td><td><span class="v">0.302</span><span class="meter" style="--v:30.2" aria-hidden="true"></span></td></tr>
+                      <tr class="best"><th scope="row">MobileNetV2 U-Net <span class="tag">best</span></th><td><span class="v">0.747</span><span class="meter" style="--v:74.7" aria-hidden="true"></span></td><td><span class="v">0.596</span><span class="meter" style="--v:59.6" aria-hidden="true"></span></td></tr>
+                      <tr><th scope="row">Autoencoder</th><td><span class="v">0.202</span><span class="meter" style="--v:20.2" aria-hidden="true"></span></td><td><span class="v">0.112</span><span class="meter" style="--v:11.2" aria-hidden="true"></span></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                Transfer learning performed best. AUROC: 0.890 baseline, 0.952 U-Net (AP 0.817), 0.663 autoencoder. Includes two Streamlit apps: upload an image for an animal, obstacle or road-clear alert, and an advanced lab for thresholds, metrics and error maps. The code is a reusable <code>roadanomaly/</code> package with documentation.
+              </dd>
+            </div>
+            <div><dt>Limits</dt><dd>Small dataset, single seed, and not comparable to the paper's open-set benchmark.</dd></div>
+          </dl>
+          <ul class="chips" aria-label="Stack"><li>Python</li><li>TensorFlow</li><li>Streamlit</li><li>Google Colab</li></ul>
+          <p class="links">
+            <a href="https://github.com/MOHAsbissi01/PROJECT_DEEPLEARNING" target="_blank" rel="noopener noreferrer">Project repository<span class="sr-only"> (opens in a new tab)</span> &rarr;</a>
+          </p>
+        </article>
+
+        <article class="project card reveal" id="project-cyberintel">
+          <header>
+            <p class="when"><span class="tag">Academic project</span> ESPRIT 5ERP-BI</p>
+            <h3>CyberIntel</h3>
+            <p class="muted">Cybersecurity text analysis, knowledge graph and Graph-RAG</p>
+          </header>
+          <!-- TODO(owner): add the project dates; the repo README does not state them. -->
+          <dl class="story">
+            <div><dt>Problem</dt><dd>Combine text classification, entity extraction, a knowledge graph, graph ML and question answering for security text, in one Streamlit web app.</dd></div>
+            <div>
+              <dt>Data note</dt>
+              <dd class="caveat">The dataset (AlicanKiraz0/Cybersecurity-Dataset-v1) is LLM-generated Q&amp;A about security concepts, <strong>not real incident reports</strong>.</dd>
+            </div>
+            <div><dt>Approach</dt><dd>Classifies security texts (TF-IDF + logistic regression, MiniLM and DistilBERT embeddings) and extracts entities (CVEs, malware, software, attacks, defenses) with a closed vocabulary. Builds an entity-incident knowledge graph with evidence-linked relations, finds clusters and similar incidents, and tests GCN, GraphSAGE, GAT and Graph Transformer models and link prediction. Answers questions with vector RAG, hybrid RAG and Graph-RAG, and refuses when the data lacks the answer.</dd></div>
+            <div>
+              <dt>Key results</dt>
+              <dd>
+                <ul class="bullets compact">
+                  <li>Topic macro-F1 0.646 (weak labels) / 0.644 (gold labels); TF-IDF + logistic regression was best.</li>
+                  <li>Entity extraction: precision 0.97, recall 0.59 on a 58-entity sample.</li>
+                  <li>Knowledge graph: 2,710 nodes, 25,970 edges, 12 clusters.</li>
+                  <li>Link prediction AUC 0.84 with a GCN autoencoder, vs 0.78 with features only and 0.50&ndash;0.53 for structure heuristics.</li>
+                </ul>
+                <div class="mini-wrap">
+                  <table class="mini">
+                    <caption>Question-answering correctness. Test sets written by the project author. Scale 0 to 1.</caption>
+                    <thead><tr><th scope="col">Method</th><th scope="col">Main set (51 q)</th><th scope="col">Paraphrase set (18 q)</th></tr></thead>
+                    <tbody>
+                      <tr><th scope="row">Vector RAG</th><td><span class="v">0.56</span><span class="meter" style="--v:56" aria-hidden="true"></span></td><td><span class="v">0.40</span><span class="meter" style="--v:40" aria-hidden="true"></span></td></tr>
+                      <tr><th scope="row">Hybrid RAG</th><td><span class="v">0.67</span><span class="meter" style="--v:67" aria-hidden="true"></span></td><td><span class="v">0.60</span><span class="meter" style="--v:60" aria-hidden="true"></span></td></tr>
+                      <tr class="best"><th scope="row">Graph-RAG <span class="tag">best</span></th><td><span class="v">1.00</span><span class="meter" style="--v:100" aria-hidden="true"></span></td><td><span class="v">0.93</span><span class="meter" style="--v:93" aria-hidden="true"></span></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </dd>
+            </div>
+            <div><dt>Limits</dt><dd>LLM-written data, limited entity-extraction recall, no measurable gain from graph models over text features, and small author-written QA test sets. The Neo4j export was not run against a live server. Gold labels were AI-annotated and are pending review.</dd></div>
+          </dl>
+          <!-- TODO(owner): README says the gold labels and NER gold await your review. Update the Limits line once you have reviewed them. -->
+          <ul class="chips" aria-label="Stack"><li>Python</li><li>Streamlit</li><li>NLTK</li><li>pytest (57 tests)</li><li>Docker Compose</li><li>Neo4j / GraphML exports</li></ul>
+          <p class="links">
+            <a href="https://github.com/MOHAsbissi01/cyber_project" target="_blank" rel="noopener noreferrer">Project repository<span class="sr-only"> (opens in a new tab)</span> &rarr;</a>
           </p>
         </article>
       </div>
@@ -310,6 +394,7 @@
       <div class="skills">
         <article class="skill card reveal"><h3>Data &amp; BI</h3><ul class="chips"><li>SQL</li><li>PostgreSQL</li><li>ETL / ELT</li><li>Power BI</li><li>DAX</li><li>Data modelling</li></ul></article>
         <article class="skill card reveal"><h3>Python &amp; ML</h3><ul class="chips"><li>Python</li><li>Pandas</li><li>scikit-learn</li><li>FastAPI</li><li>n8n</li></ul></article>
+        <article class="skill card reveal"><h3>Deep learning &amp; NLP <span class="tag">Academic projects</span></h3><ul class="chips"><li>Deep learning</li><li>TensorFlow</li><li>Computer vision</li><li>NLP</li><li>RAG / Graph-RAG</li><li>Graph ML</li><li>Streamlit</li></ul></article>
         <article class="skill card reveal"><h3>Application engineering</h3><ul class="chips"><li>.NET</li><li>EF Core</li><li>Angular</li><li>Spring Boot</li><li>REST</li><li>Git</li></ul></article>
         <article class="skill card learning reveal"><h3>Learning <span class="tag">Coursework only</span></h3><ul class="chips"><li>SAP BW</li><li>ABAP</li><li>Fiori</li><li>AWS Fundamentals</li><li>DevOps / MLOps</li></ul></article>
       </div>

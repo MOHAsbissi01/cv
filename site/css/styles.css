@@ -235,6 +235,7 @@ h3 { font-size: var(--fs-h3); font-weight: 700; }
 
 /* Projects, skills, education */
 .projects, .skills, .edu { display: grid; gap: 1.25rem; }
+.projects { align-items: start; }
 @media (min-width: 52rem) { .projects { grid-template-columns: 1fr 1fr; } .skills { grid-template-columns: repeat(2, 1fr); } .edu { grid-template-columns: repeat(3, 1fr); } }
 .project { display: flex; flex-direction: column; }
 .project:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
@@ -247,8 +248,26 @@ h3 { font-size: var(--fs-h3); font-weight: 700; }
 .links a { display: inline-block; padding-block: .5rem; }
 .skill h3 { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; margin-bottom: .25rem; }
 .skill .chips { margin-top: .9rem; }
+@media (min-width: 52rem) { .skills .learning { grid-column: 1 / -1; } }
 .learning { border-style: dashed; border-color: var(--accent); background: var(--accent-soft); }
 .learning .chips li { border-style: dashed; }
+
+/* Academic project cards: label row, data-bar tables, data caveat */
+.when { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .6rem; }
+.caveat { padding: .6rem .8rem; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 8px 8px 0; color: var(--text) !important; }
+.mini-wrap { margin: .35rem 0 .85rem; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); overflow-x: auto; }
+.mini { width: 100%; border-collapse: collapse; font: var(--fs-xs)/1.4 var(--mono); font-variant-numeric: tabular-nums; color: var(--text); }
+.mini caption { caption-side: top; text-align: left; padding: .6rem .75rem .25rem; color: var(--muted); }
+.mini th, .mini td { padding: .5rem .75rem; text-align: left; white-space: normal; vertical-align: top; border-bottom: 1px solid var(--line); }
+.mini thead th { color: var(--muted); font-weight: 600; }
+.mini tbody th { font: 500 var(--fs-sm)/1.35 var(--sans); }
+.mini tbody tr:last-child > * { border-bottom: 0; }
+.mini .v { display: block; }
+.mini .meter { display: block; min-width: 3.25rem; height: .4rem; margin-top: .3rem; border-radius: 4px; background: linear-gradient(to right, var(--accent-fill) calc(var(--v) * 1%), var(--line) 0); }
+.mini .best th, .mini .best .v { font-weight: 700; }
+.mini .tag { margin-left: .25rem; padding: 0 .4rem; font-size: .68rem; }
+.bullets.compact { gap: .35rem; margin: 0 0 .9rem; }
+.story code { font: .9em var(--mono); padding: .05rem .3rem; border-radius: 4px; background: var(--bg); border: 1px solid var(--line); }
 
 /* Award */
 .award { display: grid; gap: 1.5rem; align-items: center; }

@@ -66,6 +66,9 @@ Because only `site/` is uploaded, `docs/`, `scripts/` and `analytics/` are never
 - [ ] **Project screenshots** (Urban Mobility, Business Performance / Superstore). Add an `<img>` (WebP, with width/height and alt text) to each project card.
 - [ ] **Measurable outcomes** for both projects (model metric, data volume, users) if you can share them. The cards currently describe outcomes without numbers.
 - [ ] **Certification details**: issuer, date and credential link for AWS Academy Cloud Foundations, Fundamentals of Deep Learning, and Introduction to Transformer-Based NLP.
+- [ ] **Dates for Road Anomaly Detection and CyberIntel**: their READMEs don't state them, so the cards show none (source comments mark the spot).
+- [ ] **CyberIntel gold labels**: its README says the gold labels and NER gold were AI-annotated and await your review. The card's Limits line says "pending review"; update it once you have reviewed them.
+- [ ] **Optional screenshots**: the CyberIntel repo already has app screenshots in `docs/screenshots/` (Graph-RAG answer, refusal, knowledge-graph explorer) you could add as WebP. The Road Anomaly repo has none.
 - [ ] **Project repository access**: confirm the Urban Mobility team repo and commit link are public and show your work.
 - [ ] **GreenOPS AI**: competition date and organiser, if you want them shown (see `docs/FACTS_TO_VERIFY.md`).
 - [ ] **Phone number**: intentionally not on the site (your brief lists email, LinkedIn and GitHub). Add it to the Contact section if you want it public.

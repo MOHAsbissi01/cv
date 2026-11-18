@@ -58,6 +58,11 @@ check(p.imgs_without_alt == 0, "every img has alt text")
 for needle in ('rel="canonical"', 'property="og:image"', 'name="twitter:card"', "application/ld+json", 'name="description"'):
     check(needle in html, f"head contains {needle}")
 check("TODO" not in re.sub(r"<!--.*?-->", "", html, flags=re.S), "no visible TODO text in the rendered page")
+check(html.count('<span class="tag">Academic project</span>') == 4, "all four project cards are labelled 'Academic project'")
+for repo in ("MOHAsbissi01/PROJECT_DEEPLEARNING", "MOHAsbissi01/cyber_project"):
+    check(f"https://github.com/{repo}" in html, f"repo link present: {repo}")
+check("LLM-generated Q&amp;A" in html and "not real incident reports" in html, "CyberIntel states the dataset is LLM-generated")
+check(html.count("<caption>") >= 2 and html.count('scope="row"') >= 6, "data tables have captions and row headers")
 for f in ("robots.txt", "sitemap.xml", "404.html", "assets/images/og.png", "assets/cv/CV-2.pdf"):
     check((SITE / f).exists(), f"{f} exists")
 
