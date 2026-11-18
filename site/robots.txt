@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mohasbissi01.github.io/cv/sitemap.xml

@@ -1,60 +1,85 @@
-# Mohamed Sbissi — portfolio / PFE 2027
+# Mohamed Sbissi: portfolio
 
-The active portfolio uses the approved **CV-2.pdf** (user-reported score: 88). It has a midnight-green hero, a compact employer/award proof strip, warm light sections, three selected project cards, scroll reveals and a reading progress indicator. All assets are local; no runtime framework or remote font is used.
+Live at **https://mohasbissi01.github.io/cv/** (this URL is the QR code on the CV, so it must not change).
 
-## Open
+A hand-written static site: plain HTML, one CSS file and two small scripts. There is no build step, no framework and no runtime dependency. Fonts are system fonts, so nothing loads from a third party.
 
-Open `index.html` directly, or serve the folder with `python -m http.server 8000` and visit `http://localhost:8000/`.
-
-- Current CV: `assets/cv/CV-2.pdf`, exactly one A4 page.
-- Printable current CV: `cv-2.html`; `cv.html` contains the same approved version.
-- Previous CV preserved: `assets/cv/CV.pdf` and `cv-v1.html`.
-- Previous canonical content: `data/archive/profile-v1.json`.
-
-## Edit and build
-
-`data/profile.json` is the portfolio content source. `data/cv-2.json` contains the approved concise CV wording. Keep contribution ownership, current coursework, internship exposure and NDA restrictions explicit.
-
-From this repository:
-
-```powershell
-python scripts/build.py
-python scripts/validate.py
+```
+site/                 <- the only folder that gets published
+  index.html          single page, all real text (ATS friendly)
+  css/styles.css      tokens, light/dark themes, layout, animation
+  js/main.js          theme toggle, mobile menu, scroll reveal
+  js/dashboard.js     "Featured: Data & BI" interactive report (synthetic data)
+  assets/cv/CV-2.pdf  the CV that every "Download CV" button serves
+  assets/images/      portrait (WebP), OG image, favicon
+  robots.txt, sitemap.xml, 404.html
+scripts/              local tooling (not published)
+docs/                 private notes (not published)
+analytics/            dormant Cloudflare Worker, see below (not published)
 ```
 
-The normal build updates the website and printable alias, while retaining both PDFs. To regenerate CV-2 after deliberately editing its content:
+## Run locally
 
 ```powershell
-python scripts/build.py --pdf
-python scripts/validate.py
+python scripts/serve.py          # http://localhost:8000/cv/
 ```
 
-The PDF generator requires exactly one page, readable 9.5pt body type, extractable text, valid links and a decodable QR. It renders a PNG for visual review. It never writes the previous `CV.pdf`.
+The server mounts `site/` under `/cv/`, exactly as GitHub Pages does, so a path that would break in production breaks locally too. All asset paths in the site are relative.
 
-## Files
+## Test
 
-- `scripts/build.py`, `render_portfolio.py`, `design.py`: semantic HTML and presentation generation.
-- `css/style.css`, `responsive.css`, `premium.css`, `print.css`: portfolio design and responsive/print rules.
-- `js/main.js`: keyboard-accessible mobile navigation, scroll reveals and progress.
-- `css/cv.css`: separate CV typography, unaffected by portfolio styling.
-- `scripts/build_cv2.py`: approved current CV generation and checks.
-- `validation/`: browser screenshots, checks and CV previews.
-- `FACTS_TO_VERIFY.md`: private owner review notes excluded from the public UI.
+```powershell
+pip install playwright pillow
+playwright install chromium
+python scripts/check_site.py
+```
 
-ODDO numbers come from the internship journal: 12 HR domains, 7 SQL views, 4 Power BI pages, 25 DAX measures and 10 authenticated analytics endpoints. Kafka, OpenShift and the broader enterprise stack remain labeled environment exposure. GreenOPS technology details remain withheld under NDA; its award is a team achievement.
+It checks local links and assets, the single `<h1>`, image alt text, SEO tags, 404 behaviour, horizontal overflow at 8 widths (320 to 1920px), the dashboard interactions (mouse and keyboard), theme toggle and persistence, the mobile menu, `prefers-reduced-motion` and no-JavaScript mode.
 
-## Accessibility and validation
+For Lighthouse: `npx lighthouse http://localhost:8000/cv/ --preset=desktop` (omit `--preset` for mobile).
 
-The first visit opens the English portfolio immediately. Use EN / FR in navigation to choose French; the choice is stored locally for later visits. `data/translations-fr.json` is the French translation source; the build annotates text without changing links. Official technology and credential names are retained. The approved one-page CV remains in English. Without JavaScript, the English portfolio remains accessible.
+## Deploy
 
-Motion respects `prefers-reduced-motion`, including preference changes while the page is open. Without JavaScript, content and navigation remain accessible. Animations use opacity/transforms; scroll updates are scheduled through animation frames. No mouse-following effects or audio.
+`.github/workflows/static.yml` publishes **only `site/`** to GitHub Pages on every push to `main` (or manually from the Actions tab). One-time setting: *Settings → Pages → Build and deployment → Source: GitHub Actions* (already the case, since the previous workflow used the same deploy action).
 
-Validation checks eight widths (320–1920px), overflow, mobile menu/Escape behavior, project cards, environment disclosure, actual CV downloads, errors, no-JS mode, motion preferences, link/asset integrity, one-page A4 PDF text and bounds, and QR decoding. The previous one-page PDF is checked by hash.
+Because only `site/` is uploaded, `docs/`, `scripts/` and `analytics/` are never public. (The previous workflow uploaded the whole repo, which exposed `FACTS_TO_VERIFY.md`.)
 
-## Publish
+## Editing content
 
-Contact-card and native sharing controls are implemented. Tapping the displayed phone number opens the prefilled VCF; a separate Call link keeps dialing available. Mobile OS/browser import steps vary, and users confirm saving. The photo is embedded in the card. The share button uses the native Web Share API with a copy-link dialog fallback.
+- **Text and sections:** edit `site/index.html`. Content you still have to supply is marked `<!-- TODO(owner): ... -->` in the source (and listed below), never as visible placeholder text.
+- **CV PDF:** replace `site/assets/cv/CV-2.pdf` with your file, keeping the name. Or rename it and update the three `href="assets/cv/CV-2.pdf"` links in `index.html` plus the check in `scripts/check_site.py`.
+- **Accent colour and themes:** the tokens at the top of `css/styles.css`. Light and dark values are separate, and both were chosen for WCAG AA contrast.
+- **Dashboard data:** `js/dashboard.js` generates deterministic *synthetic* numbers from a fixed seed. They are labelled on the page as sample data and are not ODDO BHF data. Keep that label.
+- **OG image (link previews):** edit `scripts/og-template.html`, then `python scripts/make_og.py`.
+- **Sitemap date:** update `<lastmod>` in `site/sitemap.xml` when content changes.
 
-Optional, opt-in analytics and a private Cloudflare Worker/D1 dashboard are prepared in `analytics/`. **The backend is not deployed or connected; static collection is disabled.** See [analytics setup](analytics/README.md). The dashboard records consenting visit sessions and approximate active time, not named recruiter identities. Run `python scripts/validate_engagement.py` and `node analytics/test-worker.mjs` for the interaction/security checks. `validation/dashboard-test-fixture.png` contains explicitly synthetic test data.
+## Honesty rules the site follows
 
-The portfolio is updated locally; it has not been deployed. The existing GitHub Pages workflow deploys the repository on a push to `main`. Keep the `/cv/` URL: `https://mohasbissi01.github.io/cv/` is the canonical and QR destination. The separate analytics backend is not part of the static site.
+- SAP BW / ABAP / Fiori (and AWS Fundamentals, DevOps/MLOps) are shown as **"Learning, coursework only"**, never as experience.
+- Kafka and OpenShift at ODDO BHF are labelled **"Exposure, not ownership"**.
+- GreenOPS AI: team award; tools withheld under NDA; LLM work credited to teammates.
+- No invented metrics, clients, testimonials or certificates. Every number on the page comes from the ODDO BHF internship summary.
+
+## TODO: content only you can supply
+
+- [ ] **CV PDF**: confirm `site/assets/cv/CV-2.pdf` is the version you want recruiters to get.
+- [ ] **Project screenshots** (Urban Mobility, Business Performance / Superstore). Add an `<img>` (WebP, with width/height and alt text) to each project card.
+- [ ] **Measurable outcomes** for both projects (model metric, data volume, users) if you can share them. The cards currently describe outcomes without numbers.
+- [ ] **Certification details**: issuer, date and credential link for AWS Academy Cloud Foundations, Fundamentals of Deep Learning, and Introduction to Transformer-Based NLP.
+- [ ] **Dates for Road Anomaly Detection and CyberIntel**: their READMEs don't state them, so the cards show none (source comments mark the spot).
+- [ ] **CyberIntel gold labels**: its README says the gold labels and NER gold were AI-annotated and await your review. The card's Limits line says "pending review"; update it once you have reviewed them.
+- [ ] **Optional screenshots**: the CyberIntel repo already has app screenshots in `docs/screenshots/` (Graph-RAG answer, refusal, knowledge-graph explorer) you could add as WebP. The Road Anomaly repo has none.
+- [ ] **Project repository access**: confirm the Urban Mobility team repo and commit link are public and show your work.
+- [ ] **GreenOPS AI**: competition date and organiser, if you want them shown (see `docs/FACTS_TO_VERIFY.md`).
+- [ ] **Phone number**: intentionally not on the site (your brief lists email, LinkedIn and GitHub). Add it to the Contact section if you want it public.
+
+## What changed from the previous version
+
+The previous site was generated by a Python/BeautifulSoup pipeline (five stacked stylesheets, translation and analytics layers). It was replaced with the hand-written site above. Everything removed is still in git history (last version: commit `a6daeb2`):
+
+- the EN/FR language switch and French translations
+- the contact-card (vCard) and share dialogs, and the consent banner
+- `privacy.html` (not needed while nothing collects data) and the printable `cv.html` / `cv-2.html`
+- the old two-page `CV.pdf`
+
+The `analytics/` folder (Cloudflare Worker + dashboard) is untouched. It was never deployed, and the static-site hooks that fed it were removed with the old front end, so reconnecting it means re-adding a small client script.
